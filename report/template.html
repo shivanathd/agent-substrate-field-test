@@ -1,7 +1,7 @@
 <title>Agent Substrate Field Test</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+{{FONTS_CSS}}</style>
 <style>
 /* Layout: cool "cold-storage" ground; sticky tab bar; one 50rem column per tab, wide figures break out to 64rem. */
 :root {
@@ -144,6 +144,10 @@ ul.verify li.ok { color: var(--good); } ul.verify li.no { color: var(--bad); } u
 ol.src { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.55rem; max-width: 68ch; color: var(--ink-2); font-size: 0.92rem; }
 .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; }
 
+pre.md { white-space: pre-wrap; overflow-wrap: anywhere; }
+.kit-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1rem; }
+button.copy { font: 500 0.78rem/1 var(--f-body); color: var(--accent); background: var(--accent-soft); border: 1px solid var(--rule); border-radius: 4px; padding: 0.45rem 0.7rem; cursor: pointer; }
+button.copy:hover { border-color: var(--accent); }
 #tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--ground); font: 500 0.78rem/1.35 var(--f-body); padding: 0.4rem 0.55rem; border-radius: 4px; max-width: 18rem; z-index: 9; }
 @media (max-width: 30rem) { .v { grid-template-columns: 1fr; gap: 0.4rem; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -166,6 +170,7 @@ ol.src { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.55rem; max-width
   <button role="tab" id="t-sec" aria-controls="sec" aria-selected="false" tabindex="-1">Security</button>
   <button role="tab" id="t-verify" aria-controls="verify" aria-selected="false" tabindex="-1">Verification</button>
   <button role="tab" id="t-src" aria-controls="src" aria-selected="false" tabindex="-1">Sources</button>
+  <button role="tab" id="t-post" aria-controls="post" aria-selected="false" tabindex="-1">Post kit</button>
 </nav>
 
 <!-- ============================== OVERVIEW -->
@@ -405,6 +410,51 @@ scripts/teardown.sh --delete-project         <span class="c"># verifies nothing 
 </section>
 </div>
 </div>
+<!-- ============================== POST KIT -->
+<div class="panel" role="tabpanel" id="post" aria-labelledby="t-post" hidden>
+<section>
+  <h2>Post kit</h2>
+  <p>Everything a writer needs for the post, in this one file. The whole report is self-contained (fonts, charts and diagrams are inlined, nothing loads from the network), so the saved HTML can be handed to a writing agent as is. The same file is <code>report/index.html</code> in the <a href="https://github.com/shivanathd/agent-substrate-field-test">repo</a>.</p>
+</section>
+<section>
+  <h2>Brief for the writer</h2>
+  <ul>
+    <li><strong>Angle:</strong> a hands-on test of a new open-source agent runtime's claims, with numbers, by someone who ran real coding agents on it. Not a launch announcement or a tutorial.</li>
+    <li><strong>Audience:</strong> engineering leads and platform engineers deciding how to host many AI agents; people who know Kubernetes but not Substrate.</li>
+    <li><strong>The one idea to land:</strong> the economics depend on one number, the share of time agents are awake. Cheap below about 25%, no saving at 50%, and hosted sandboxes that don't bill while paused beat it on on-demand nodes.</li>
+    <li><strong>The memorable moment:</strong> three Claude Code agents frozen mid-task, moved to other machines, and resumed with their in-memory counters intact.</li>
+    <li><strong>The warning:</strong> memory snapshots are not encrypted; the upstream demo's API key was in them 77 times. The fix (gateway credential injection) works and was verified.</li>
+    <li><strong>Call to action:</strong> the repo has setup, tests, raw data and teardown; invite people to run it on other hardware and share numbers.</li>
+  </ul>
+  <h3>Keep these true</h3>
+  <ul>
+    <li>Two nodes, one region, one day. It is not a scale test or a production review.</li>
+    <li>Spot nodes were priced, not tested. Costs are list prices on 16 Oct 2026.</li>
+    <li>Tested upstream commit 603e006; the project is pre-1.0 and changes weekly.</li>
+    <li>Not affiliated with the Substrate project or Google. "Sub-500 ms resume" holds for small agents only.</li>
+    <li>Use the exact numbers in the fact sheet below; don't round 3.5 s to "a few seconds" or 77 to "dozens".</li>
+  </ul>
+</section>
+<section class="wide">
+  <div class="kit-head"><h2>Fact sheet</h2><button class="copy" type="button" data-copy="facts-json">Copy as JSON</button></div>
+  <div class="tw">{{POST_FACTS}}</div>
+  <details><summary>Show the JSON</summary><div class="code"><pre id="facts-json">{{POST_FACTS_JSON}}</pre></div></details>
+  <script type="application/json" id="post-facts">{{POST_FACTS_JSON}}</script>
+</section>
+<section class="wide">
+  <div class="kit-head"><h2>LinkedIn draft</h2><span class="meta">{{POST_LI_CHARS}} characters (LinkedIn allows 3,000)</span><button class="copy" type="button" data-copy="post-li">Copy</button></div>
+  <div class="code"><pre class="md" id="post-li">{{POST_LI}}</pre></div>
+</section>
+<section class="wide">
+  <div class="kit-head"><h2>Long-form draft</h2><button class="copy" type="button" data-copy="post-long">Copy</button></div>
+  <div class="code"><pre class="md" id="post-long">{{POST_LONG}}</pre></div>
+</section>
+<section class="wide">
+  <h2>Source material</h2>
+  <p>The repo's write-ups as raw Markdown, for detail beyond the drafts.</p>
+  {{POST_SOURCES}}
+</section>
+</div>
 <div id="tip" hidden></div>
 <script>
 (() => {
@@ -424,6 +474,13 @@ scripts/teardown.sh --delete-project         <span class="c"># verifies nothing 
   });
   const fromHash = () => { const t = tabs.find(t => '#' + t.getAttribute('aria-controls') === location.hash); if (t) select(t); };
   fromHash(); addEventListener('hashchange', fromHash);
+
+  document.querySelectorAll('button.copy').forEach(b => b.addEventListener('click', async () => {
+    const label = b.textContent;
+    try { await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent); b.textContent = 'Copied'; }
+    catch (e) { b.textContent = 'Select the text to copy'; }
+    setTimeout(() => { b.textContent = label; }, 1800);
+  }));
 
   const tip = document.getElementById('tip');
   const show = (el, x, y) => { tip.textContent = el.dataset.tip; tip.hidden = false;

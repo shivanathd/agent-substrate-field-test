@@ -288,6 +288,33 @@ fill = {
     "C5_ALWAYS": money(c5["Always-on pods, one per agent"]),
     "NODE_OD": f"{NODE_OD:.4f}", "NODE_SPOT": f"{NODE_SPOT:.4f}",
 }
+# Post kit tab: drafts, a fact sheet built from the same numbers as the rest of the page, and the docs as raw source.
+pre = lambda t: html.escape(t)
+li = (ROOT / "post/linkedin.md").read_text()
+facts = {
+    "repo": "https://github.com/shivanathd/agent-substrate-field-test",
+    "upstream": "https://github.com/agent-substrate/substrate @ 603e006 (after v0.5.0)",
+    "setup": "GKE 1.36.4, 2 x c3-standard-4, us-west1, gVisor and microVM sandboxes",
+    "test_cost_usd": "about 3", "wall_clock": "4 h 15 m", "cluster_cost_per_day_usd": "12.73",
+    "state_persistence": "20 of 20 freeze/thaw cycles exact (memory, files, root filesystem), across workers",
+    "claude_code_agents": "3 agents suspended and resumed mid-loop; in-memory counters continued; all resumed on a different worker; 8/8 checks",
+    "credential_injection": "8/8: gateway injected the secret; absent from agent env, /proc environ and filesystem",
+    "snapshot_secret_copies": 77,
+    "wake_p50_seconds": {"small": fill["SMALL_RESUME"], "1GiB_gvisor": fill["G1_RESUME"], "2GiB_gvisor": fill["G2_RESUME"], "2GiB_microvm": fill["M2_RESUME"]},
+    "benchmark": {"runs": fill["TOTAL_RUNS"], "requests": fill["TOTAL_REQ"], "failures": fill["TOTAL_FAIL"], "oversubscribed_15_agents_on_10_workers_requests": fill["O15_REQ"]},
+    "monthly_cost_1000_agents_5pct_awake_usd": {"substrate_on_demand": fill["C5_SUB"], "substrate_spot_untested": fill["C5_SPOT"],
+        "e2b_or_daytona": fill["C5_E2B"], "vercel_sandbox": fill["C5_VERCEL"], "always_on_pods": fill["C5_ALWAYS"]},
+    "nodes_1000_agents_5pct_awake": {"substrate": fill["DUTY5"], "always_on": fill["ALWAYS"]},
+}
+fact_rows = [[k.replace("_", " "), html.escape(json.dumps(v) if isinstance(v, dict) else str(v))] for k, v in facts.items()]
+DOCS = ["findings", "use-cases", "cost", "benchmarks", "methodology", "timeline", "upstream-issues", "code-review"]
+fill.update({
+    "POST_LI": pre(li), "POST_LI_CHARS": f"{len(li):,}", "POST_LONG": pre((ROOT / "post/post.md").read_text()),
+    "POST_FACTS": table(["Fact", "Value"], fact_rows),
+    "POST_FACTS_JSON": json.dumps(facts, indent=2).replace("</", "<\\/"),
+    "POST_SOURCES": "\n".join(f'<details><summary>docs/{d}.md</summary><div class="code"><pre class="md">{pre((ROOT / f"docs/{d}.md").read_text())}</pre></div></details>' for d in DOCS),
+    "FONTS_CSS": (ROOT / "report/fonts.css").read_text(),
+})
 page = (ROOT / "report/template.html").read_text()
 for k, val in fill.items():
     page = page.replace("{{" + k + "}}", str(val))
