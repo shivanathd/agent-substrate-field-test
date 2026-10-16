@@ -17,6 +17,6 @@ The economics come down to one number: how much of the time your agents are awak
 
 The surprise: hosted sandboxes that don't bill while paused (E2B, Daytona) came in cheaper than self-hosting on on-demand nodes at every duty cycle I modelled. Self-hosting only wins on spot nodes. Run it for control, not price.
 
-Setup, tests, raw data and teardown are open source: [repo link]
+Setup, tests, raw data and teardown are open source: https://github.com/shivanathd/agent-substrate-field-test
 
 #AIagents #Kubernetes #ClaudeCode #OpenSource

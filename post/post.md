@@ -10,7 +10,7 @@ agent. So I stood it up from nothing on GKE, ran three Claude Code agents on it,
 security story, and benchmarked it with its own harness. Total spend: about $3. Total time: one
 working day, a lot of it waiting for Docker.
 
-Everything is reproducible: [repo link]. Here's what I found.
+Everything is reproducible: https://github.com/shivanathd/agent-substrate-field-test. Here's what I found.
 
 ## The core trick works
 
@@ -104,4 +104,4 @@ My take:
 The repo has the setup script, every test, the raw benchmark data and a verified teardown.
 If you run it on different hardware, I'd like to see your numbers.
 
-[repo link]
+https://github.com/shivanathd/agent-substrate-field-test
