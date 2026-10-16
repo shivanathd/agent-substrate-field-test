@@ -22,6 +22,8 @@
     {"sev": "low", "file": "report/build_report.py", "issue": "Crashed if the oversubscription run was missing.", "fix": "Guarded.", "status": "fixed"},
     {"sev": "low", "file": "bench/summarize.py, tests/*", "issue": "Wrote output relative to the current directory.", "fix": "Paths are relative to the repo; tests cd to the repo root.", "status": "fixed"},
     {"sev": "low", "file": "scripts/sanitize.py, scripts/verify.sh", "issue": "--replace without '=' crashed (an empty OLD would corrupt files); a trailing --forbid tripped set -u.", "fix": "Both validated with a clear error.", "status": "fixed"},
+    {"sev": "low", "file": "bench/run-all.sh", "issue": "An unknown group name was skipped only after the run log was created, leaving an empty results/raw/bench-run-all-*.log behind (found by the runtime verify pass).", "fix": "Group names are validated before anything is written; a typo exits 2.", "status": "fixed"},
+    {"sev": "low", "file": "scripts/verify.sh", "issue": "The identity scan walked whole directories, so a local gitignored scripts/env.sh failed it, and tail -5 hid problems past the fifth.", "fix": "Scans only files git would publish (git ls-files -co --exclude-standard) and shows up to 20 problems.", "status": "fixed"},
     {"sev": "info", "file": "scripts/setup.sh", "issue": "setup.sh has never been run end to end; it was assembled from steps that were each run individually during the field test.", "fix": "Stated in the README. A clean-room run is the next validation step.", "status": "open"}
   ]
 }
