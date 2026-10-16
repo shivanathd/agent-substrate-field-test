@@ -124,8 +124,10 @@ sys.exit(1 if broken else 0)
 PY
 
 echo "6. identity"
-python3 scripts/sanitize.py ${FORBID[@]+"${FORBID[@]}"} results docs/*.md docs/*.diff post README.md report scripts tests bench LICENSE .gitignore \
-  | sed 's/^/  /' | tail -5
+# Only files git would publish: local gitignored files (scripts/env.sh) may hold real identifiers.
+python3 scripts/sanitize.py ${FORBID[@]+"${FORBID[@]}"} $(git ls-files -co --exclude-standard -- \
+    results 'docs/*.md' 'docs/*.diff' post README.md report scripts tests bench LICENSE .gitignore .claude) \
+  | sed 's/^/  /' | tail -20
 [ "${PIPESTATUS[0]}" = 0 ] && ok "no forbidden identifiers or credential-shaped strings" || bad "identity check"
 git check-ignore -q docs/internal/x 2>/dev/null && ok "docs/internal/ is gitignored" || bad "docs/internal/ not ignored"
 

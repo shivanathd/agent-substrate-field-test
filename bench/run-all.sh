@@ -5,7 +5,8 @@
 # Usage:
 #   SUBSTRATE=~/src/substrate CONTEXT=<ctx> BUCKET=<bucket> IMAGE=<.../locust-test:latest> \
 #     bench/run-all.sh [group ...]
-# Groups: base mem1g mem2g w5 w10 microvm microvm2g   (default: the gVisor ones)
+# Groups: base mem1g mem2g w5 w10 durdir microvm microvm2g long-g1 long-g2 long-m1 long-m2
+#         (default: base mem1g mem2g w5 w10)
 # microvm groups need `hack/install-microvm-deps.sh --install` in $SUBSTRATE first.
 #
 # Needs: substrate's .ate-dev-env.sh in $SUBSTRATE (the workload deploy builds images with ko).
@@ -14,8 +15,6 @@ set -uo pipefail
 SUBSTRATE=${SUBSTRATE:?}; CONTEXT=${CONTEXT:?}; BUCKET=${BUCKET:?}; IMAGE=${IMAGE:?}
 HERE=$(cd "$(dirname "$0")/.." && pwd)
 GROUPS_TO_RUN=${*:-base mem1g mem2g w5 w10}
-LOG="$HERE/results/raw/bench-run-all-$(date +%Y%m%d-%H%M%S).log"
-
 # group -> "workerCount actorMemory sandboxClass | catalogue entries"
 group_def() {
   case $1 in
@@ -35,6 +34,11 @@ group_def() {
   esac
 }
 
+for g in $GROUPS_TO_RUN; do
+  [ -n "$(group_def "$g")" ] || { echo "unknown group: $g" >&2; exit 2; }
+done
+LOG="$HERE/results/raw/bench-run-all-$(date +%Y%m%d-%H%M%S).log"
+
 redeploy() {  # workers memory class
   local args=(--worker-count "$1" --sandbox-class "$3"); [ "$2" != - ] && args+=(--actor-memory "$2")
   ( cd "$SUBSTRATE" && source .ate-dev-env.sh && export KUBECTL_CONTEXT="$CONTEXT" &&
@@ -44,7 +48,7 @@ redeploy() {  # workers memory class
 
 {
 for g in $GROUPS_TO_RUN; do
-  def=$(group_def "$g"); [ -n "$def" ] || { echo "unknown group: $g (skipped; nothing deleted)"; continue; }
+  def=$(group_def "$g")
   shape=${def%%|*}; tests=${def#*|}
   read -r w m c <<<"$shape"
   echo "=== group $g: workers=$w actorMemory=$m class=$c  $(date +%H:%M:%S)"

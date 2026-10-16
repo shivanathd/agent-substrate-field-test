@@ -31,7 +31,189 @@ report is in [report/index.html](report/index.html).
 | Is "sub-500 ms resume" true? | **For small agents.** 1 GiB takes ~3.5 s, 2 GiB ~7 s (16 s on microVM) | [benchmarks](docs/benchmarks.md#b2--memory-size-is-the-dominant-factor) |
 | What does the test cost? | **~$3** for the day; $12.73/day if left running | [cost.md](docs/cost.md) |
 | Is it cheaper than one pod per agent? | **~9× at 5% awake, 2× at 25%, no saving at 50%** (1,000 agents) | [cost.md](docs/cost.md#model-1000-agents-05-vcpu--1-gib-each-when-awake) |
+| Is it cheaper than a hosted sandbox? | **Not on on-demand nodes.** E2B/Daytona (not billed while paused) cost less at every duty cycle; Substrate wins only on spot nodes | [cost.md](docs/cost.md#against-hosted-sandboxes) |
 | How long to stand up? | ~45–60 min from nothing on an arm64 Mac, of which ~30 is image builds | [timeline](docs/timeline.md) |
+
+## Diagrams
+
+### What we ran
+
+Drawn with [Archify](https://github.com/tt-a1i/archify) from [`report/diagrams/cluster.architecture.json`](report/diagrams/cluster.architecture.json).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/diagrams/arch-dark.svg">
+  <img alt="Agent Substrate on GKE: client and kubectl reach the router and API server; worker pods hold sandboxed actors; atelet checkpoints them to a GCS bucket; all egress goes through atenet-egress, which injects keys from the credential provider" src="report/diagrams/arch-light.svg">
+</picture>
+
+The same system as Mermaid, for editing:
+
+```mermaid
+flowchart LR
+  subgraph gke["GKE cluster · us-west1-c · 2 × c3-standard-4"]
+    api["ate-api-server<br/>gRPC control plane"]
+    pg[("PostgreSQL<br/>actors, templates, policies")]
+    router["atenet-router<br/>Envoy ingress, wakes actors"]
+    subgraph sandbox["sandboxed actors"]
+      workers["Worker pods<br/>many actors per pod<br/>gVisor or microVM"]
+    end
+    atelet["atelet<br/>node agent"]
+    egress["atenet-egress<br/>mTLS, policy, key injection"]
+    cred["Credential provider<br/>reads k8s Secrets"]
+  end
+  cli["kubectl ate<br/>operator laptop"]
+  client["Client or Locust"]
+  gcs[("GCS snapshot bucket<br/>zstd RAM + disk, unencrypted")]
+  ext["External APIs<br/>e.g. api.anthropic.com"]
+
+  cli -->|gRPC| api
+  api -->|actor state| pg
+  client -->|"HTTP + ate-target-actor"| router
+  router -->|resolve, resume| api
+  router -->|route request| workers
+  atelet -->|checkpoint, restore| workers
+  atelet -->|upload, download| gcs
+  workers -->|"all egress, mTLS"| egress
+  egress -->|fetch key| cred
+  egress -->|allow-list only| ext
+```
+
+### How a sleeping agent wakes up
+
+Upstream's resume flow ([`docs/architecture.md`](https://github.com/agent-substrate/substrate/blob/603e006236f576d9435f46757e3fe2e556768ddf/docs/architecture.md)),
+annotated with the server-side phase times we measured for a small agent (gVisor, median).
+
+```mermaid
+sequenceDiagram
+  actor Client
+  participant Router as atenet-router
+  participant API as ate-api-server
+  participant Atelet as atelet
+  participant Store as GCS bucket
+  participant Worker as worker pod (gVisor)
+
+  Client->>Router: HTTP request (ate-target-actor)
+  Router->>API: ResumeActor
+  API->>Atelet: Restore
+  Atelet->>Store: fetch manifest (31 ms)
+  Store-->>Atelet: download snapshot (47 ms)
+  Atelet->>Worker: restore sandbox (122 ms)
+  Worker-->>Atelet: ready
+  Atelet-->>API: worker pod IP
+  API-->>Router: worker assignment
+  Router->>Worker: forward request (mTLS tunnel)
+  Worker-->>Client: response, state intact
+  Note over Client,Worker: wake p50: 0.22 s small · 3.5 s at 1 GiB · 6.9 s at 2 GiB (16 s on microVM)
+```
+
+### Actor states
+
+Upstream's state machine plus the crash path, which we hit when a worker pod was deleted under
+three running actors.
+
+```mermaid
+stateDiagram-v2
+  [*] --> SUSPENDED : CreateActor
+  SUSPENDED --> RESUMING : ResumeActor or inbound request
+  RESUMING --> RUNNING : restore complete
+  RUNNING --> SUSPENDING : SuspendActor (upload to bucket)
+  RUNNING --> SUSPENDING : PauseActor (node-local snapshot)
+  SUSPENDING --> SUSPENDED : checkpoint complete
+  RUNNING --> CRASHED : worker pod went away
+  SUSPENDING --> CRASHED : worker pod went away
+  CRASHED --> REVERTING : kubectl ate revert
+  REVERTING --> SUSPENDED : back to last snapshot
+  SUSPENDED --> [*] : DeleteActor
+```
+
+### How the field test ran
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/diagrams/flow-dark.svg">
+  <img alt="Field test workflow across laptop, GCP project and GKE cluster lanes, with a lane of failures and their fixes" src="report/diagrams/flow-light.svg">
+</picture>
+
+The real day, from the timestamps in [`docs/timeline.md`](docs/timeline.md) (IST):
+
+```mermaid
+gantt
+  title Field test, 16 Oct 2026 (IST)
+  dateFormat HH:mm
+  axisFormat %H:%M
+  section Provision
+    Login, project, budget          :done, 11:22, 15m
+    setup-gcp bootstrap (GKE)       :done, 11:37, 6m
+  section Install
+    Install attempt 1 (failed)      :crit, 11:45, 15m
+    Install attempt 2 (failed)      :crit, 12:03, 2m
+    Install attempt 3               :done, 12:06, 16m
+  section Test
+    F1 state persistence            :done, 12:26, 5m
+    Demos deploy                    :done, 12:31, 9m
+    F5 credential injection         :done, 12:35, 11m
+    F3 Claude Code agents           :done, 12:46, 22m
+    F6 snapshot secret scan         :done, 13:08, 6m
+  section Benchmark
+    Locust image build              :done, 13:13, 13m
+    gVisor suite                    :done, 13:32, 45m
+    microVM assets (3 tries)        :crit, 14:16, 31m
+    microVM 1-min runs              :done, 14:45, 13m
+    5-minute memory runs            :done, 15:00, 37m
+```
+
+### Should you run it?
+
+```mermaid
+flowchart TD
+  q1{"Hundreds of agents with<br/>state they must keep?"}
+  q2{"Awake less than<br/>~25% of the time?"}
+  q3{"Need your own VPC, egress<br/>control or data residency?"}
+  q4{"Already run Kubernetes<br/>and can run spot nodes?"}
+  no1["A Deployment or one VM"]
+  hosted["Hosted sandbox that stops<br/>billing when paused"]
+  sub["Agent Substrate<br/>(prototype: pre-1.0)"]
+
+  q1 -->|no| no1
+  q1 -->|yes| q2
+  q2 -->|no| no1
+  q2 -->|yes| q3
+  q3 -->|no| hosted
+  q3 -->|yes| q4
+  q4 -->|no| hosted
+  q4 -->|yes| sub
+```
+
+## Charts
+
+From the in-cluster benchmarks; all numbers are in [`results/benchmarks.csv`](results/benchmarks.csv).
+
+**Wake and sleep time by agent memory** (blue gVisor, orange microVM; dot median, whisker p95)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/charts/wake-sleep-by-memory-wake-dark.svg">
+  <img width="420" alt="Wake time by memory: 0.22 s for a small agent, 3.5 s at 1 GiB on both sandboxes, 6.9 s on gVisor and 16 s on microVM at 2 GiB" src="report/charts/wake-sleep-by-memory-wake-light.svg">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/charts/wake-sleep-by-memory-sleep-dark.svg">
+  <img width="420" alt="Sleep time by memory: 0.54 s small, 3.5 s at 1 GiB, about 10 s at 2 GiB" src="report/charts/wake-sleep-by-memory-sleep-light.svg">
+</picture>
+
+**Where the time goes** (green: transfer to or from the bucket; purple: sandbox checkpoint or restore)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/charts/phase-breakdown-dark.svg">
+  <img alt="Phase breakdown: bucket transfer is about two thirds of wake and sleep time at 1 GiB" src="report/charts/phase-breakdown-light.svg">
+</picture>
+
+**1,000 agents a month** (blue Substrate on-demand, orange Substrate spot, green E2B or Daytona,
+yellow Vercel Sandbox, dashed red one always-on pod per agent)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="report/charts/cost-1000-agents-dark.svg">
+  <img alt="Monthly cost by share of time awake: E2B/Daytona below Substrate on-demand at every point; Substrate on spot nodes lowest; always-on pods flat at about $20k" src="report/charts/cost-1000-agents-light.svg">
+</picture>
+
+The full interactive report (tabs, tooltips, tables) is `report/index.html`; open it locally,
+since GitHub shows HTML as source.
 
 ## Reproduce it
 
