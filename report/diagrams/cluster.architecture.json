@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Agent Substrate on GKE: what the field test ran",
+    "output": ".archify/architecture-substrate-cluster-20261016-1945/substrate-cluster.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "cli", "type": "external", "label": "kubectl ate", "sublabel": "operator CLI, laptop", "pos": [40, 40], "size": [150, 62] },
+    { "id": "api", "type": "backend", "label": "ate-api-server", "sublabel": "gRPC control plane, 2 pods", "pos": [320, 40], "size": [170, 62] },
+    { "id": "pg", "type": "database", "label": "PostgreSQL", "sublabel": "actors, templates, policies", "pos": [600, 40], "size": [170, 62] },
+    { "id": "cred", "type": "security", "label": "Credential provider", "sublabel": "reads k8s Secrets", "pos": [880, 40], "size": [170, 62] },
+    { "id": "client", "type": "external", "label": "Client or Locust", "sublabel": "HTTP request to an agent", "pos": [40, 240], "size": [150, 62] },
+    { "id": "router", "type": "backend", "label": "atenet-router", "sublabel": "Envoy ingress, wakes actors", "pos": [320, 240], "size": [170, 62] },
+    { "id": "worker", "type": "backend", "label": "Worker pods", "sublabel": "many actors per pod", "tag": "gVisor or microVM", "pos": [600, 240], "size": [170, 62] },
+    { "id": "egress", "type": "security", "label": "atenet-egress", "sublabel": "mTLS, policy, key injection", "pos": [880, 240], "size": [170, 62] },
+    { "id": "ext", "type": "cloud", "label": "External APIs", "sublabel": "e.g. api.anthropic.com", "pos": [1160, 240], "size": [160, 62] },
+    { "id": "atelet", "type": "backend", "label": "atelet", "sublabel": "node agent, DaemonSet", "pos": [600, 440], "size": [170, 62] },
+    { "id": "gcs", "type": "database", "label": "GCS snapshot bucket", "sublabel": "zstd RAM + disk, unencrypted", "pos": [880, 440], "size": [190, 62] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "GKE 1.36.4 cluster, us-west1-c, 2 x c3-standard-4", "wraps": ["api", "pg", "cred", "router", "worker", "egress", "atelet"], "pad": 22 },
+    { "kind": "security-group", "label": "sandboxed actors", "wraps": ["worker"], "pad": 12 }
+  ],
+  "connections": [
+    { "id": "c-cli-api", "from": "cli", "to": "api", "label": "gRPC via port-forward" },
+    { "id": "c-api-pg", "from": "api", "to": "pg", "label": "actor state" },
+    { "id": "c-client-router", "from": "client", "to": "router", "label": "ate-target-actor", "variant": "emphasis" },
+    { "id": "c-router-api", "from": "router", "to": "api", "label": "resolve, resume", "route": "straight" },
+    { "id": "c-router-worker", "from": "router", "to": "worker", "label": "route request", "variant": "emphasis" },
+    { "id": "c-worker-egress", "from": "worker", "to": "egress", "label": "all egress, mTLS", "variant": "security" },
+    { "id": "c-egress-cred", "from": "egress", "to": "cred", "label": "fetch key", "variant": "security", "route": "straight" },
+    { "id": "c-egress-ext", "from": "egress", "to": "ext", "label": "allow-list only", "variant": "emphasis" },
+    { "id": "c-atelet-worker", "from": "atelet", "to": "worker", "label": "checkpoint, restore", "route": "straight" },
+    { "id": "c-atelet-gcs", "from": "atelet", "to": "gcs", "label": "upload, download", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Wake path, measured", "items": ["Small agent: 0.22 s median wake, 0.54 s sleep", "1 GiB: 3.5 s wake; 2 GiB: 6.9 s (16 s on microVM)", "Bucket transfer is ~2/3 of wake time at 1 GiB"] },
+    { "dot": "rose", "title": "Security boundary", "items": ["No egress policy means no egress at all, DNS included", "Injected keys never entered the sandbox (8/8 checks)", "Snapshots in the bucket held an API key 77 times"] },
+    { "dot": "slate", "title": "Not drawn", "items": ["ate-controller reconciles WorkerPool CRDs into worker pods", "Pause mode keeps snapshots on the node's local disk", "Worker pod loss leaves its actors CRASHED until revert"] }
+  ]
+}

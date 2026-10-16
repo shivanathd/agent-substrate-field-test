@@ -1,0 +1,29 @@
+1. code
+  PASS  all scripts parse
+2. tests
+  PASS  F1 20 cycles, all state checks ok
+  PASS  03-claude-multiplex: result: 8 passed, 0 failed
+  PASS  05-credential-injection: result: 8 passed, 0 failed
+  PASS  F6: secret occurrences across 12 snapshot objects: 77
+3. bench
+  PASS  18 summarised runs all have raw stats.jsonl
+  PASS  every raw run is in the summary
+  PASS  4,717 requests, 0 failures
+4. lineage
+  PASS  benchmarks.csv rebuilds identically from raw runs
+  PASS  report rebuilds identically from benchmarks.csv
+  PASS  small wake p50 = 0.22 (exact match in data)
+  PASS  1 GiB gVisor wake p50 = 3.5 (exact match in data)
+  PASS  1 GiB gVisor wake p95 = 4.0 (exact match in data)
+  PASS  2 GiB gVisor wake p50 = 6.9 (exact match in data)
+  PASS  2 GiB microVM wake p50 = 16 (exact match in data)
+  PASS  15/10 requests = 2,123 (exact match in data)
+  PASS  docs/cost.md matches the cost model (20 cells)
+5. links
+  PASS  all relative links resolve
+6. identity
+  rewrote 0 files; 0 problems
+  PASS  no forbidden identifiers or credential-shaped strings
+  PASS  docs/internal/ is gitignored
+
+VERIFY: all checks passed

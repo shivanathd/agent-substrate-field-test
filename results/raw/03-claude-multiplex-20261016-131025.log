@@ -1,0 +1,41 @@
+== workers
+NAME                                   POOL                STATE                 ACTORS   CPU       MEMORY         POD                                                        AGE
+ef0a54e7-d9cf-4804-9f34-9d13f8dade42   claude-workerpool   WORKER_STATE_ACTIVE   0/1000   0/3920m   0/13591652Ki   claude-multiplex-demo/claude-workerpool-7f879c75f8-9c54t   30m
+db91f9b4-0610-4898-a8d6-5fdbd7ab2bea   claude-workerpool   WORKER_STATE_ACTIVE   0/1000   0/3920m   0/13591656Ki   claude-multiplex-demo/claude-workerpool-7f879c75f8-b69k6   30m
+== phase 1: all three agents running
+luna RUNNING after 3.9s on claude-workerpool-7f879c75f8-b69k6
+mars RUNNING after 4.0s on claude-workerpool-7f879c75f8-9c54t
+orion RUNNING after 3.8s on claude-workerpool-7f879c75f8-b69k6
+--- luna
+The Moon is slowly moving away from Earth, by about 3.8 centimeters a year.
+The Moon is drifting away from Earth by about 3.8 centimeters every year, roughly the speed your fingernails grow.
+The Moon is slowly drifting away from Earth, by about 3.8 centimeters each year.
+--- mars
+Build a small, real project in it right away instead of just reading tutorials, because working through actual problems teaches you the language's idioms faster.
+Build a small real project in it right away, like a CLI tool or a simple game, because you'll learn its idioms faster by solving real problems than by reading about syntax.
+Build a small real project in it right away, like a CLI tool or a simple game, because hitting actual problems teaches you the idioms faster than reading tutorials.
+--- orion
+Try a chickpea and spinach stir-fry: sauté canned chickpeas with garlic, spinach and cherry tomatoes in olive oil, then serve it over microwaveable brown rice with a squeeze of lemon.
+Try a spinach and chickpea stir-fry: sauté canned chickpeas with garlic, cherry tomatoes and spinach in olive oil, then serve it over quick-cooking couscous with a squeeze of lemon.
+Try a spinach and chickpea stir-fry: sauté a can of rinsed chickpeas with garlic, cherry tomatoes and a few handfuls of spinach in olive oil, season with cumin and lemon, and serve it over microwaveable quinoa or whole-grain toast.
+PASS  all three agents got a real Claude answer
+PASS  no API errors while running
+== phase 2: suspend all, resume each (likely onto a different worker)
+luna SUSPENDED after 4.6s at tick 23
+mars SUSPENDED after 5.1s at tick 22
+orion SUSPENDED after 4.4s at tick 24
+orion RUNNING after 4.6s on claude-workerpool-7f879c75f8-b69k6 (was claude-workerpool-7f879c75f8-b69k6)
+mars RUNNING after 3.8s on claude-workerpool-7f879c75f8-9c54t (was claude-workerpool-7f879c75f8-9c54t)
+luna RUNNING after 3.7s on claude-workerpool-7f879c75f8-9c54t (was claude-workerpool-7f879c75f8-b69k6)
+luna tick 23 -> 26
+PASS  luna tick counter continued (process memory restored)
+PASS  luna got a real Claude answer after resume
+mars tick 22 -> 25
+PASS  mars tick counter continued (process memory restored)
+PASS  mars got a real Claude answer after resume
+orion tick 24 -> 28
+PASS  orion tick counter continued (process memory restored)
+PASS  orion got a real Claude answer after resume
+INFO  agents that resumed on a different worker pod: 1/3
+== park everything
+result: 8 passed, 0 failed

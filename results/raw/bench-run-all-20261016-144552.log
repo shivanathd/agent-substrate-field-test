@@ -1,0 +1,6 @@
+=== group microvm: workers=1 actorMemory=1536Mi class=microvm  14:45:52
+    workloads ready in 139s
+OK glutton_mem_1gi_microvm -> ./results/raw/bench/glutton_mem_1gi_microvm-20261016-144811
+=== group microvm2g: workers=1 actorMemory=2560Mi class=microvm  14:51:14
+    workloads ready in 138s
+OK glutton_mem_2gi_microvm -> ./results/raw/bench/glutton_mem_2gi_microvm-20261016-145333

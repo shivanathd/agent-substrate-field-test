@@ -1,0 +1,293 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Field test run: from empty project to published results",
+    "output": ".archify/workflow-field-test-setup-20261016-1945/field-test-setup.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "laptop",
+      "label": "Operator laptop (arm64 Mac)"
+    },
+    {
+      "id": "gcp",
+      "label": "GCP project"
+    },
+    {
+      "id": "cluster",
+      "label": "GKE cluster"
+    },
+    {
+      "id": "fix",
+      "label": "What broke, and the fix",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "provision",
+      "label": "Provision, 20 min",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "install",
+      "label": "Install, 33 min",
+      "fromCol": 2,
+      "toCol": 2,
+      "variant": "emphasis"
+    },
+    {
+      "id": "test",
+      "label": "Test, 50 min",
+      "fromCol": 3,
+      "toCol": 3
+    },
+    {
+      "id": "bench",
+      "label": "Benchmark, 2 h 25 min",
+      "fromCol": 4,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "publish",
+      "label": "Publish",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "prereq",
+    "project",
+    "bootstrap",
+    "build",
+    "install",
+    "tests",
+    "bench",
+    "report"
+  ],
+  "nodes": [
+    {
+      "id": "prereq",
+      "lane": "laptop",
+      "col": 0,
+      "type": "external",
+      "label": "Prerequisites",
+      "sublabel": "gcloud login, tools",
+      "width": 140
+    },
+    {
+      "id": "project",
+      "lane": "gcp",
+      "col": 0,
+      "type": "cloud",
+      "label": "Throwaway project",
+      "sublabel": "billing, $50 budget",
+      "width": 140
+    },
+    {
+      "id": "bootstrap",
+      "lane": "gcp",
+      "col": 1,
+      "type": "cloud",
+      "label": "setup-gcp bootstrap",
+      "sublabel": "GKE, bucket, IAM: 6 min",
+      "width": 150
+    },
+    {
+      "id": "build",
+      "lane": "laptop",
+      "col": 2,
+      "type": "backend",
+      "label": "Build all images",
+      "sublabel": "amd64 emulated, 16 min",
+      "width": 150
+    },
+    {
+      "id": "install",
+      "lane": "cluster",
+      "col": 2,
+      "type": "backend",
+      "label": "ate-system + demos",
+      "sublabel": "counter, sandbox, Claude",
+      "width": 150
+    },
+    {
+      "id": "tests",
+      "lane": "cluster",
+      "col": 3,
+      "type": "security",
+      "label": "Functional tests",
+      "sublabel": "F1 20/20, F3 8/8, F5 8/8",
+      "width": 150
+    },
+    {
+      "id": "scan",
+      "lane": "laptop",
+      "col": 3,
+      "type": "database",
+      "label": "Snapshot scan (F6)",
+      "sublabel": "key found 77 times",
+      "width": 150
+    },
+    {
+      "id": "bench",
+      "lane": "cluster",
+      "col": 4,
+      "type": "messagebus",
+      "label": "Locust benchmarks",
+      "sublabel": "18 runs, 4,717 req, 0 fail",
+      "width": 160
+    },
+    {
+      "id": "report",
+      "lane": "laptop",
+      "col": 5,
+      "type": "frontend",
+      "label": "Summarise + verify",
+      "sublabel": "sanitise, verify.sh",
+      "width": 150
+    },
+    {
+      "id": "f_apt",
+      "lane": "fix",
+      "col": 2,
+      "type": "security",
+      "label": "Install failed 2x",
+      "sublabel": "parallel builds; run serially",
+      "width": 160
+    },
+    {
+      "id": "f_dns",
+      "lane": "fix",
+      "col": 3,
+      "type": "security",
+      "label": "No egress policy",
+      "sublabel": "demo blocked; add allow rule",
+      "width": 160
+    },
+    {
+      "id": "f_actor",
+      "lane": "fix",
+      "col": 4,
+      "type": "security",
+      "label": "Leftover actors",
+      "sublabel": "3 bad runs; clean + rerun",
+      "width": 160
+    },
+    {
+      "id": "f_zstd",
+      "lane": "fix",
+      "col": 5,
+      "type": "security",
+      "label": "microVM needs zstd",
+      "sublabel": "924 MB fetched 3x",
+      "width": 160
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "prereq",
+      "to": "project",
+      "label": "create"
+    },
+    {
+      "id": "e2",
+      "from": "project",
+      "to": "bootstrap"
+    },
+    {
+      "id": "e3",
+      "from": "bootstrap",
+      "to": "build",
+      "label": "push to registry",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e4",
+      "from": "build",
+      "to": "install",
+      "label": "deploy",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e5",
+      "from": "install",
+      "to": "tests"
+    },
+    {
+      "id": "e6",
+      "from": "tests",
+      "to": "bench",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e7",
+      "from": "bench",
+      "to": "report",
+      "label": "stats.jsonl",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e8",
+      "from": "tests",
+      "to": "scan",
+      "label": "read bucket",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "id": "x1",
+      "from": "install",
+      "to": "f_apt",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "x2",
+      "from": "tests",
+      "to": "f_dns",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "x3",
+      "from": "bench",
+      "to": "f_actor",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "x4",
+      "from": "bench",
+      "to": "f_zstd",
+      "variant": "security",
+      "role": "error"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Wall clock",
+      "items": [
+        "4 h 15 min from first command to last benchmark",
+        "~1 h 30 min of it was builds and downloads via the laptop",
+        "Run setup from a cloud VM in-region to cut most of that"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Cost",
+      "items": [
+        "Cluster: $0.53/h, about $12.73/day while up",
+        "Whole test day: about $3 including the Anthropic API",
+        "Teardown script verifies nothing billable remains"
+      ]
+    }
+  ]
+}

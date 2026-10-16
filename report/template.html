@@ -1,0 +1,439 @@
+<title>Agent Substrate Field Test</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cool "cold-storage" ground; sticky tab bar; one 50rem column per tab, wide figures break out to 64rem. */
+:root {
+  --ground: #f4f7f8;  --paper: #ffffff;  --ink: #11191e;  --ink-2: #47555e;  --muted: #6f7d86;
+  --rule: #d6dee3;  --accent: #0d6a75;  --accent-soft: #e2f0f1;
+  --s1: #2a78d6;  --s2: #eb6834;  --s3: #1baf7a;  --s4: #6250d6;  --s0: #3d6f84;
+  --c1: #2a78d6;  --c2: #eb6834;  --c3: #1baf7a;  --c4: #eda100;  --c5: #e87ba4;
+  --good: #1d7a3a;  --warn: #9a6200;  --bad: #b3261e;  --mute: #5b6770;
+  --good-bg: #e5f3e9;  --warn-bg: #fbf0dc;  --bad-bg: #fbe6e4;  --mute-bg: #e9eef1;
+  --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --dg-light: block;  --dg-dark: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0d1316;  --paper: #141c20;  --ink: #e4ecef;  --ink-2: #a8b6bd;  --muted: #81919a;
+    --rule: #26333a;  --accent: #5bc2cc;  --accent-soft: #15292d;
+    --s1: #3987e5;  --s2: #d95926;  --s3: #199e70;  --s4: #9085e9;  --s0: #6aa3b8;
+    --c1: #3987e5;  --c2: #d95926;  --c3: #199e70;  --c4: #c98500;  --c5: #d55181;
+    --good: #6cc98a;  --warn: #e3b35a;  --bad: #f08a82;  --mute: #9aa7ae;
+    --good-bg: #13291b;  --warn-bg: #2c2412;  --bad-bg: #321715;  --mute-bg: #1c262b;
+    --dg-light: none;  --dg-dark: block;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0d1316;  --paper: #141c20;  --ink: #e4ecef;  --ink-2: #a8b6bd;  --muted: #81919a;
+  --rule: #26333a;  --accent: #5bc2cc;  --accent-soft: #15292d;
+  --s1: #3987e5;  --s2: #d95926;  --s3: #199e70;  --s4: #9085e9;  --s0: #6aa3b8;
+  --c1: #3987e5;  --c2: #d95926;  --c3: #199e70;  --c4: #c98500;  --c5: #d55181;
+  --good: #6cc98a;  --warn: #e3b35a;  --bad: #f08a82;  --mute: #9aa7ae;
+  --good-bg: #13291b;  --warn-bg: #2c2412;  --bad-bg: #321715;  --mute-bg: #1c262b;
+  --dg-light: none;  --dg-dark: block;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink); font: 400 1rem/1.6 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 64rem; margin: 0 auto; }
+header.top { padding-block: 2.5rem 1.25rem; display: grid; gap: 0.9rem; max-width: 50rem; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 5.5vw, 3rem); line-height: 1.05; font-weight: 700; }
+h2 { font-size: 1.4rem; line-height: 1.2; font-weight: 700; }
+h3 { font-size: 1.05rem; line-height: 1.3; font-weight: 700; }
+p { margin: 0; max-width: 68ch; color: var(--ink-2); }
+p strong, li strong, td strong { color: var(--ink); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code { font-family: var(--f-mono); font-size: 0.84em; }
+.eyebrow { font: 500 0.75rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.meta { font: 400 0.8rem/1.55 var(--f-mono); color: var(--muted); }
+.lede { font-size: 1.1rem; color: var(--ink-2); }
+
+/* tabs */
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 4; background: var(--ground);
+  border-bottom: 1px solid var(--rule); display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs button { font: 500 0.88rem/1 var(--f-body); color: var(--ink-2); background: none; border: 0; border-bottom: 2px solid transparent;
+  padding: 0.85rem 0.8rem 0.75rem; cursor: pointer; white-space: nowrap; }
+nav.tabs button:hover { color: var(--ink); }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.panel { padding-block: 2rem 4.5rem; display: grid; gap: 2.75rem; }
+.panel[hidden] { display: none; }
+section { display: grid; gap: 1rem; max-width: 50rem; }
+section.wide { max-width: none; }
+
+/* verdicts */
+.verdicts { display: grid; border-top: 1px solid var(--rule); }
+.v { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding-block: 0.8rem; border-bottom: 1px solid var(--rule); align-items: start; }
+.v .claim { font-weight: 600; color: var(--ink); }
+.v p { font-size: 0.95rem; }
+.chip { display: inline-flex; align-items: center; gap: 0.35rem; justify-self: start; font: 600 0.72rem/1 var(--f-mono);
+  letter-spacing: 0.05em; text-transform: uppercase; padding: 0.33rem 0.5rem; border-radius: 3px; white-space: nowrap; }
+.chip.good { color: var(--good); background: var(--good-bg); } .chip.warn { color: var(--warn); background: var(--warn-bg); }
+.chip.bad { color: var(--bad); background: var(--bad-bg); }    .chip.mute { color: var(--mute); background: var(--mute-bg); }
+.chip svg { width: 0.8rem; height: 0.8rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.stat { background: var(--paper); padding: 0.9rem 1rem; display: grid; gap: 0.2rem; }
+.stat b { font: 700 1.5rem/1.1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 0.8rem; color: var(--muted); }
+
+/* figures */
+figure { margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.1rem 0.9rem; display: grid; gap: 0.8rem; }
+.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0.5rem; }
+figcaption { font-size: 0.84rem; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: 0.8rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.legend i { width: 0.7rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+.legend i.sw.ref { height: 0; border-top: 2px dashed var(--bad); border-radius: 0; }
+svg { width: 100%; height: auto; display: block; overflow: visible; }
+svg text { font-family: var(--f-body); }
+.ptitle { font: 600 12px var(--f-body); fill: var(--ink); }
+.tick { font-size: 11px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.dlabel { font-size: 11px; fill: var(--ink-2); font-weight: 500; }
+.vlabel { font-size: 11px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.grid { stroke: var(--rule); stroke-width: 1; }
+.axis { stroke: var(--muted); stroke-width: 1; }
+.ln { fill: none; stroke-width: 2; }
+.whisk { stroke-width: 2; stroke-linecap: round; opacity: 0.55; }
+.dot { stroke: var(--paper); stroke-width: 2; }
+.ln.s1, .whisk.s1 { stroke: var(--s1); } .dot.s1 { fill: var(--s1); }
+.ln.s2, .whisk.s2 { stroke: var(--s2); } .dot.s2 { fill: var(--s2); }
+.bar.s3 { fill: var(--s3); } .bar.s4 { fill: var(--s4); } .bar.s0 { fill: var(--s0); }
+.ln.c1 { stroke: var(--c1); } .dot.c1, .sw.c1 { fill: var(--c1); background: var(--c1); }
+.ln.c2 { stroke: var(--c2); } .dot.c2, .sw.c2 { fill: var(--c2); background: var(--c2); }
+.ln.c3 { stroke: var(--c3); } .dot.c3, .sw.c3 { fill: var(--c3); background: var(--c3); }
+.ln.c4 { stroke: var(--c4); } .dot.c4, .sw.c4 { fill: var(--c4); background: var(--c4); }
+.ln.c5 { stroke: var(--c5); } .dot.c5, .sw.c5 { fill: var(--c5); background: var(--c5); }
+.ln.ref { stroke: var(--bad); stroke-width: 1.5; } .dot.ref { fill: var(--bad); }
+.bar, .dot { transition: opacity .15s; }
+svg:hover .bar:not(:hover), svg:hover .dot:not(:hover) { opacity: 0.5; }
+details summary { cursor: pointer; font-size: 0.84rem; color: var(--accent); }
+details[open] summary { margin-bottom: 0.6rem; }
+.diagram { padding: 0.6rem; overflow-x: auto; }
+.diagram .dg-l { display: var(--dg-light); } .diagram .dg-d { display: var(--dg-dark); }
+.diagram svg { min-width: 44rem; }
+
+/* tables */
+.tw { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+th { text-align: left; font: 500 0.7rem/1.3 var(--f-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); padding: 0.45rem 0.7rem 0.45rem 0; border-bottom: 1px solid var(--rule); vertical-align: bottom; }
+td { padding: 0.45rem 0.7rem 0.45rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); vertical-align: top; }
+table.dense td { white-space: nowrap; }
+table.review td:nth-child(3), table.review td:nth-child(4) { min-width: 15rem; color: var(--ink-2); }
+
+.callout { background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--bad); border-radius: 4px; padding: 0.9rem 1rem; display: grid; gap: 0.5rem; overflow-x: auto; }
+.callout pre { margin: 0; font: 400 0.8rem/1.55 var(--f-mono); color: var(--ink); white-space: pre; }
+.callout .k { color: var(--bad); font-weight: 500; }
+ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.45rem; max-width: 68ch; color: var(--ink-2); }
+.code { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 0.9rem 1rem; overflow-x: auto; }
+.code pre { margin: 0; font: 400 0.8rem/1.6 var(--f-mono); color: var(--ink); }
+.code .c { color: var(--muted); }
+ul.verify { list-style: none; padding: 0.8rem 1rem; gap: 0.15rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; font: 400 0.8rem/1.5 var(--f-mono); max-width: none; }
+ul.verify li.ok { color: var(--good); } ul.verify li.no { color: var(--bad); } ul.verify li.hd { color: var(--ink); font-weight: 500; margin-top: 0.35rem; }
+ol.src { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.55rem; max-width: 68ch; color: var(--ink-2); font-size: 0.92rem; }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; }
+
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--ground); font: 500 0.78rem/1.35 var(--f-body); padding: 0.4rem 0.55rem; border-radius: 4px; max-width: 18rem; z-index: 9; }
+@media (max-width: 30rem) { .v { grid-template-columns: 1fr; gap: 0.4rem; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Field test · 16 Oct 2026</div>
+  <h1>Agent Substrate, frozen and thawed</h1>
+  <p class="lede">Google's open-source runtime freezes idle AI agents into a storage bucket and thaws them onto any free machine. We stood it up on GKE from nothing, ran real Claude Code agents on it, checked its security claims, benchmarked it with its own harness and priced it against hosted sandboxes.</p>
+  <p class="meta">substrate @ 603e006 (after v0.5.0) · GKE 1.36.4 · 2 × c3-standard-4 · gVisor and microVM · us-west1 · ≈ $3 total</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Report sections">
+  <button role="tab" id="t-overview" aria-controls="overview" aria-selected="true">Overview</button>
+  <button role="tab" id="t-bench" aria-controls="bench" aria-selected="false" tabindex="-1">Benchmarks</button>
+  <button role="tab" id="t-cost" aria-controls="cost" aria-selected="false" tabindex="-1">Cost</button>
+  <button role="tab" id="t-arch" aria-controls="arch" aria-selected="false" tabindex="-1">Cluster &amp; setup</button>
+  <button role="tab" id="t-sec" aria-controls="sec" aria-selected="false" tabindex="-1">Security</button>
+  <button role="tab" id="t-verify" aria-controls="verify" aria-selected="false" tabindex="-1">Verification</button>
+  <button role="tab" id="t-src" aria-controls="src" aria-selected="false" tabindex="-1">Sources</button>
+</nav>
+
+<!-- ============================== OVERVIEW -->
+<div class="panel" role="tabpanel" id="overview" aria-labelledby="t-overview">
+<section>
+  <div class="stats">
+    <div class="stat"><b>{{SMALL_RESUME}}</b><span>wake, small agent (median)</span></div>
+    <div class="stat"><b>{{G1_RESUME}}</b><span>wake at 1 GiB</span></div>
+    <div class="stat"><b>{{G2_RESUME}}</b><span>wake at 2 GiB (microVM {{M2_RESUME}})</span></div>
+    <div class="stat"><b>{{TOTAL_REQ}}</b><span>benchmark requests, {{TOTAL_FAIL}} failed</span></div>
+  </div>
+</section>
+<section aria-labelledby="v-h">
+  <h2 id="v-h">What held up</h2>
+  <div class="verdicts">
+    <div class="v"><span class="chip good"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Holds</span>
+      <div><div class="claim">State survives a freeze</div><p>20 of 20 cycles came back with memory, files and root filesystem exact, across three different workers.</p></div></div>
+    <div class="v"><span class="chip good"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Holds</span>
+      <div><div class="claim">Real coding agents can be frozen mid-task</div><p>Three Claude Code agents resumed with their in-memory loop counters intact, one on a different node, and kept getting answers from Claude.</p></div></div>
+    <div class="v"><span class="chip warn"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v6M8 12v1" fill="none" stroke="currentColor" stroke-width="2"/></svg>Partly</span>
+      <div><div class="claim">“Sub-500 ms resume”</div><p>True for a small agent ({{SMALL_RESUME}}). A 1 GiB agent takes {{G1_RESUME}}; a 2 GiB agent {{G2_RESUME}}, or {{M2_RESUME}} under microVM isolation.</p></div></div>
+    <div class="v"><span class="chip good"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Holds</span>
+      <div><div class="claim">Oversubscription without errors</div><p>15 agents on 10 workers: {{O15_REQ}} requests, zero failures. Sleep slows down under load; wake barely moves.</p></div></div>
+    <div class="v"><span class="chip good"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Holds</span>
+      <div><div class="claim">Agents can use keys they never hold</div><p>The egress gateway injected a secret into an outbound request; the secret was nowhere in the agent's environment, processes or filesystem.</p></div></div>
+    <div class="v"><span class="chip bad"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2"/></svg>Fails</span>
+      <div><div class="claim">Secrets an agent does hold are safe at rest</div><p>Memory snapshots are not encrypted. The demo's API key was in them 77 times.</p></div></div>
+    <div class="v"><span class="chip warn"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v6M8 12v1" fill="none" stroke="currentColor" stroke-width="2"/></svg>Depends</span>
+      <div><div class="claim">Cheaper than the alternatives</div><p>9× cheaper than one pod per agent at 5% awake. But a hosted sandbox that doesn't bill while paused (E2B: {{C5_E2B}}/month) beats Substrate on on-demand nodes ({{C5_SUB}}); Substrate wins on spot nodes ({{C5_SPOT}}).</p></div></div>
+  </div>
+</section>
+<section>
+  <h2>Who should care</h2>
+  <ul>
+    <li><strong>Hundreds of stateful, mostly idle agents</strong> (one per user, customer or ticket) on a team that already runs Kubernetes: the core works today and the economics hold below about 25% awake.</li>
+    <li><strong>A handful of agents, or busy ones:</strong> a Deployment or a hosted sandbox is simpler and no more expensive.</li>
+    <li><strong>Everyone:</strong> inject credentials at the edge instead of handing them to agents. Snapshots keep whatever an agent holds.</li>
+  </ul>
+  <p class="meta">Not a scale test (two nodes), not a production review, not affiliated with the Substrate project or Google.</p>
+</section>
+</div>
+
+<!-- ============================== BENCHMARKS -->
+<div class="panel" role="tabpanel" id="bench" aria-labelledby="t-bench" hidden>
+<section>
+  <h2>How these were measured</h2>
+  <p>Upstream's own Locust harness, running in-cluster as a Kubernetes Job, so no laptop or WAN in the path. Each run is an unmodified entry from upstream's benchmark catalogue; the memory entries were also run for 5 minutes instead of 1 because a 2 GiB agent only fits a few cycles a minute. <code>glutton</code> holds a fixed amount of memory and re-reads all of it after every wake, the worst case for lazy page loading. {{TOTAL_RUNS}} runs, {{TOTAL_REQ}} requests, {{TOTAL_FAIL}} failures.</p>
+</section>
+<section class="wide">
+  <h2>Memory decides how long a wake takes</h2>
+  <figure>
+    <div class="legend"><span><i style="background:var(--s1)"></i>gVisor</span><span><i style="background:var(--s2)"></i>microVM</span><span>dot = median · whisker = p95</span></div>
+    <div class="panels">{{CHART_MEM}}</div>
+    <figcaption>Median wake and sleep time by resident memory, same vertical scale in both panels. microVM measured at 1 and 2 GiB.</figcaption>
+  </figure>
+  <p>Budget about <strong>3.5 s per GiB</strong>, with a long tail past 1 GiB: at 2 GiB one wake in twenty took 15 s on gVisor.</p>
+</section>
+<section class="wide">
+  <h2>gVisor and microVM, side by side</h2>
+  {{TABLE_CMP}}
+  <p>Same at the median at 1 GiB, with microVM carrying the heavier tail. At 2 GiB microVM wakes take more than twice as long, and the difference is the sandbox restore itself, not the bucket. Stronger isolation is cheap for small agents and expensive for big ones.</p>
+</section>
+<section class="wide">
+  <h2>Most of that time is the bucket</h2>
+  <figure>
+    <div class="legend"><span><i style="background:var(--s3)"></i>Transfer to or from the snapshot bucket</span><span><i style="background:var(--s4)"></i>Sandbox checkpoint or restore</span></div>
+    {{CHART_PHASE}}
+    <figcaption>Server-side phase breakdown from Substrate's node agent, gVisor, median.</figcaption>
+    <details><summary>Show the numbers</summary>{{TABLE_PHASE}}</details>
+  </figure>
+</section>
+<section>
+  <h3>Pause keeps the snapshot on the node</h3>
+  {{TABLE_PAUSE}}
+  <p>Pause skips the bucket transfer but pins the agent to its node. Use it for short idle gaps and suspend for long ones.</p>
+</section>
+<section class="wide">
+  <h2>Under load, sleep slows down and wake doesn't</h2>
+  {{TABLE_CONC}}
+  <p>The cost of load shows up in uploads: with 15 agents cycling on two nodes the median upload went from about 0.3 s to 1.1 s. Snapshot upload bandwidth is the bottleneck, not the scheduler.</p>
+</section>
+<section class="wide">
+  <h2>Durable directories</h2>
+  {{TABLE_DD}}
+  <p>An 8 MiB file in a volume Substrate persists with the agent. Letting the router wake the agent on the first request costs nothing over an explicit wake. The first read after a wake pays about 25 ms of lazy loading.</p>
+</section>
+<section class="wide">
+  <h2>Every run</h2>
+  {{TABLE_ALL}}
+  <p class="meta">Three earlier durdir runs were invalid (a harness bug of ours left actors from the previous test holding the only worker) and are excluded; they are kept with an explanation in <code>results/raw/bench-invalid/</code>.</p>
+</section>
+</div>
+
+<!-- ============================== COST -->
+<div class="panel" role="tabpanel" id="cost" aria-labelledby="t-cost" hidden>
+<section>
+  <h2>What this test cost</h2>
+  <div class="stats">
+    <div class="stat"><b>$0.53</b><span>per hour, cluster up</span></div>
+    <div class="stat"><b>$12.73</b><span>per day if left running</span></div>
+    <div class="stat"><b>≈ $3</b><span>the whole test day</span></div>
+    <div class="stat"><b>4 h 15 m</b><span>wall clock, start to last benchmark</span></div>
+  </div>
+  <p>Two <code>c3-standard-4</code> nodes at ${{NODE_OD}}/h each including disk, plus the $0.10/h cluster fee. The expensive resource was time: about 1 h 30 m of it was image builds and downloads through the laptop.</p>
+</section>
+<section class="wide">
+  <h2>1,000 agents a month, five ways</h2>
+  <p>Each agent gets 0.5 vCPU and 1 GiB when awake. Substrate needs enough nodes for the agents awake at once with 2× headroom, plus one for the control plane. Hosted sandboxes bill per second while running.</p>
+  <figure>
+    <div class="legend">{{COST_LEGEND}}</div>
+    {{CHART_COST}}
+    <figcaption>List prices on 16 Oct 2026, us-west1 for GCP. Hover a point for its value.</figcaption>
+    <details open><summary>Show the numbers</summary>{{TABLE_COST}}</details>
+  </figure>
+  <ul>
+    <li><strong>Against one pod per agent</strong>, Substrate is 9× cheaper at 5% awake, 2× at 25%, and no cheaper at 50%.</li>
+    <li><strong>Against hosted sandboxes that stop billing when paused</strong> (E2B, Daytona), Substrate on on-demand nodes costs more at every duty cycle we modelled. Hosted pricing has no headroom or control-plane overhead.</li>
+    <li><strong>Substrate wins on spot nodes</strong> (about 60% off), which suit it because agents already live in snapshots. We did not test spot: a reclaimed node leaves its agents CRASHED until reverted.</li>
+    <li>What the numbers leave out: running Postgres, the router, the gateway and node agents yourself; committed-use discounts; data residency and VPC control, which are the usual reasons to self-host.</li>
+  </ul>
+</section>
+<section>
+  <h3>Nodes needed</h3>
+  {{TABLE_NODES}}
+  <p class="meta">Snapshot storage and bucket operations add about $30/month at 20 wakes per agent per day. An idle Claude Code agent's own snapshot was about 300 KB on top of an 18 MB base shared by its template.</p>
+</section>
+</div>
+
+<!-- ============================== ARCHITECTURE -->
+<div class="panel" role="tabpanel" id="arch" aria-labelledby="t-arch" hidden>
+<section class="wide">
+  <h2>What we ran</h2>
+  <p>A request reaches an agent through the router, which wakes it onto a worker pod if it is asleep. The node agent checkpoints and restores agents to the bucket. Every outbound connection goes through the egress gateway, which enforces the allow-list and injects credentials.</p>
+  <figure class="diagram"><div class="dg-l">{{SVG_ARCH_L}}</div><div class="dg-d">{{SVG_ARCH_D}}</div></figure>
+</section>
+<section class="wide">
+  <h2>How the test ran, including what broke</h2>
+  <p>From an empty GCP project to published results. The bottom lane is every failure we hit and how it was fixed.</p>
+  <figure class="diagram"><div class="dg-l">{{SVG_FLOW_L}}</div><div class="dg-d">{{SVG_FLOW_D}}</div></figure>
+</section>
+<section>
+  <h2>Run it yourself</h2>
+  <div class="code"><pre><span class="c"># about $0.53 an hour while the cluster is up</span>
+cp scripts/env.example.sh scripts/env.sh     <span class="c"># new project ID, billing account</span>
+scripts/setup.sh                             <span class="c"># 45–60 min from nothing</span>
+tests/01-state-persistence.sh                <span class="c"># state survives 20 freeze/thaw cycles</span>
+tests/05-credential-injection.sh             <span class="c"># 8 checks incl. controls</span>
+tests/03-claude-multiplex.sh                 <span class="c"># needs an Anthropic key</span>
+bench/run-all.sh &amp;&amp; bench/summarize.py       <span class="c"># 1–2 h of upstream benchmarks</span>
+python3 report/build_report.py               <span class="c"># this page</span>
+scripts/verify.sh --forbid &lt;your-project&gt;    <span class="c"># gate before publishing</span>
+scripts/teardown.sh --delete-project         <span class="c"># verifies nothing billable is left</span></pre></div>
+  <p>Setup refuses to touch a project or Substrate checkout it did not create, and teardown refuses any project without its label. Run it from a cloud VM in the same region and most of the build and download time disappears.</p>
+</section>
+</div>
+
+<!-- ============================== SECURITY -->
+<div class="panel" role="tabpanel" id="sec" aria-labelledby="t-sec" hidden>
+<section>
+  <h2>Credentials injected at the edge</h2>
+  <p>A random secret went into a Kubernetes Secret. The agent called an in-cluster echo server with <code>Authorization: placeholder</code>. Eight checks, all passed:</p>
+  <ul>
+    <li>The server received <code>Bearer &lt;secret&gt;</code> and never saw the placeholder.</li>
+    <li>The request arrived from the egress gateway pod's IP, not the agent's.</li>
+    <li>The secret was absent from the agent's environment, every <code>/proc/*/environ</code>, and a full filesystem search (which we confirmed actually ran).</li>
+    <li>HTTPS to a host the policy doesn't cover was refused, and the same request succeeded once the policy allowed it, so the policy did the refusing.</li>
+  </ul>
+  <p>An agent with no egress policy has all traffic blocked, DNS included. That is why the upstream Claude Code demo can't reach Claude as shipped.</p>
+</section>
+<section>
+  <h2>Snapshots are RAM in a bucket</h2>
+  <p>A memory snapshot is the agent's memory, compressed and written to object storage. Substrate does not encrypt it. The upstream demo passes its API key as an environment variable, so we unwrapped its snapshots and counted.</p>
+  <div class="callout">
+    <pre><span class="k">41 54 45 53 50 52 53 45</span> 02 00 00 00 <span class="k">28 b5 2f fd</span> …   <span class="k">ATESPRSE</span> v2  zstd frame</pre>
+    <p class="meta">Every snapshot object starts like this: an 8-byte magic, a version, then a plain zstd stream.</p>
+  </div>
+  <ul>
+    <li><strong>77 copies</strong> of the full key across 12 snapshot objects: the template's shared base image, each agent's own delta, and checkpoint metadata.</li>
+    <li>Read access to the bucket is read access to every secret any agent held in memory.</li>
+    <li>Fix: inject credentials at the gateway so agents never hold them, and treat the bucket as a secret store anyway (customer-managed keys, tight IAM, access logs).</li>
+  </ul>
+</section>
+<section>
+  <h2>Other rough edges</h2>
+  <ul>
+    <li>Alpine-based agents couldn't resolve <code>example.com</code> inside the sandbox; <code>example.com.</code> with a trailing dot worked. Node-based agents were fine.</li>
+    <li>When a worker pod disappears, its agents go to CRASHED and wait for a manual revert.</li>
+    <li>Every image builds from source on the operator's machine; on Apple silicon that is amd64 under emulation.</li>
+    <li>The microVM installer needs a <code>zstd</code> binary it doesn't list, and finds out after a 924 MB download.</li>
+  </ul>
+  <p>Nine items, with reproduction steps, are written up for the maintainers in <code>docs/upstream-issues.md</code>.</p>
+</section>
+</div>
+
+<!-- ============================== VERIFICATION -->
+<div class="panel" role="tabpanel" id="verify" aria-labelledby="t-verify" hidden>
+<section>
+  <h2>The publish gate</h2>
+  <p><code>scripts/verify.sh</code> must pass before anything is published. It checks that every script parses, every test log ends in its pass line, every benchmark run has its raw data with zero failures, the summary and this page rebuild byte-for-byte from raw data, every headline number matches a specific run exactly, every doc link resolves, and no account identifiers or credentials remain. Last run:</p>
+  <ul class="verify">{{VERIFY_LINES}}</ul>
+</section>
+<section class="wide">
+  <h2>Independent code review</h2>
+  <p>A separate reviewer read every script before publication. {{REVIEW_SUMMARY}} The open note is honest about scope: <code>setup.sh</code> has not been run end to end; it was assembled from steps that were each run during the test.</p>
+  {{TABLE_REVIEW}}
+</section>
+</div>
+
+<!-- ============================== SOURCES -->
+<div class="panel" role="tabpanel" id="src" aria-labelledby="t-src" hidden>
+<section>
+  <h2>Sources</h2>
+  <h3>Substrate</h3>
+  <ol class="src">
+    <li><a href="https://github.com/agent-substrate/substrate">agent-substrate/substrate</a>, tested at commit <a href="https://github.com/agent-substrate/substrate/commit/603e006236f576d9435f46757e3fe2e556768ddf"><code>603e006</code></a> (16 Oct 2026). Benchmark harness, demos and setup tooling are upstream's.</li>
+    <li><a href="https://cloud.google.com/blog/products/containers-kubernetes/agent-substrate-available-on-gke">Agent Substrate available on GKE</a>, Google Cloud blog. Source of the density and resume claims tested here.</li>
+    <li><a href="https://docs.cloud.google.com/kubernetes-engine/ai-ml/about-agent-substrate">About GKE Agent Substrate</a>, Google Cloud documentation.</li>
+    <li><a href="https://www.cncf.io/blog/2026/07/07/why-sandboxing-your-agent-is-not-enough/">Why sandboxing your agent is not enough</a>, CNCF blog (agent-sandbox vs agent-substrate).</li>
+    <li><a href="https://kagent.dev/blog/kagent-agent-substrate-sandboxes">Kagent and Agent Substrate</a>, kagent blog.</li>
+  </ol>
+  <h3>Prices (read 16 Oct 2026)</h3>
+  <ol class="src">
+    <li>GCP Compute, GKE and Cloud Storage: Cloud Billing Catalog API for us-west1 (C3 on-demand and spot core/RAM, GCS Standard), plus <a href="https://cloud.google.com/compute/disks-image-pricing">disk pricing</a>, <a href="https://cloud.google.com/kubernetes-engine/pricing">GKE pricing</a> and <a href="https://cloud.google.com/storage/pricing">Cloud Storage pricing</a>.</li>
+    <li><a href="https://e2b.dev/pricing">E2B pricing</a>: $0.000014 per vCPU-second, $0.0000045 per GiB-second. <a href="https://docs.e2b.dev/faq/calculate-sandbox-price">E2B billing FAQ</a>: "Paused and killed sandboxes are not billed." <a href="https://e2b.dev/docs/sandbox/persistence">E2B persistence</a>: pause about 4 s per GiB, resume about 1 s (vendor figures, not measured here).</li>
+    <li><a href="https://www.daytona.io/pricing">Daytona pricing</a>: $0.0504 per vCPU-hour, $0.0162 per GiB-hour, storage $0.000108 per GiB-hour after 5 GiB.</li>
+    <li><a href="https://vercel.com/docs/sandbox/pricing">Vercel Sandbox pricing</a>: $0.128 per active CPU-hour, $0.0212 per provisioned GB-hour, snapshots $0.08 per GB-month.</li>
+    <li>Modal and Cloudflare sandbox prices were found only in third-party comparisons and are left out.</li>
+  </ol>
+  <h3>This repo</h3>
+  <ol class="src">
+    <li><code>docs/methodology.md</code>: tests and pass bars, written before any test ran.</li>
+    <li><code>docs/findings.md</code>, <code>docs/benchmarks.md</code>, <code>docs/cost.md</code>, <code>docs/timeline.md</code>, <code>docs/upstream-issues.md</code>, <code>docs/code-review.md</code>.</li>
+    <li><code>results/raw/</code>: every test log and benchmark run; <code>results/benchmarks.csv</code> is the summary this page is built from.</li>
+    <li>Diagrams drawn with Archify from <code>report/diagrams/*.json</code>.</li>
+  </ol>
+</section>
+</div>
+</div>
+<div id="tip" hidden></div>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const select = (tab, focus) => {
+    tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) tab.focus();
+    try { history.replaceState(null, '', '#' + tab.getAttribute('aria-controls')); } catch (e) {}
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+  const fromHash = () => { const t = tabs.find(t => '#' + t.getAttribute('aria-controls') === location.hash); if (t) select(t); };
+  fromHash(); addEventListener('hashchange', fromHash);
+
+  const tip = document.getElementById('tip');
+  const show = (el, x, y) => { tip.textContent = el.dataset.tip; tip.hidden = false;
+    const r = tip.getBoundingClientRect();
+    tip.style.left = Math.min(x + 12, innerWidth - r.width - 8) + 'px';
+    tip.style.top = Math.max(8, y - r.height - 10) + 'px'; };
+  document.querySelectorAll('[data-tip]').forEach(el => {
+    el.querySelector('title')?.remove();
+    el.addEventListener('pointermove', e => show(el, e.clientX, e.clientY));
+    el.addEventListener('pointerleave', () => { tip.hidden = true; });
+    el.addEventListener('focus', () => { const b = el.getBoundingClientRect(); show(el, b.right, b.top); });
+    el.addEventListener('blur', () => { tip.hidden = true; });
+  });
+})();
+</script>

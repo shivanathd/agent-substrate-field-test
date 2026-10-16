@@ -1,0 +1,12 @@
+=== group long-g1: workers=1 actorMemory=1536Mi class=gvisor  15:00:07
+    workloads ready in 131s
+OK glutton_mem_1gi_gvisor_5m -> ./results/raw/bench/glutton_mem_1gi_gvisor_5m-20261016-150218
+=== group long-m1: workers=1 actorMemory=1536Mi class=microvm  15:09:06
+    workloads ready in 150s
+OK glutton_mem_1gi_microvm_5m -> ./results/raw/bench/glutton_mem_1gi_microvm_5m-20261016-151136
+=== group long-g2: workers=1 actorMemory=2560Mi class=gvisor  15:18:25
+    workloads ready in 137s
+OK glutton_mem_2gi_gvisor_5m -> ./results/raw/bench/glutton_mem_2gi_gvisor_5m-20261016-152042
+=== group long-m2: workers=1 actorMemory=2560Mi class=microvm  15:27:31
+    workloads ready in 137s
+OK glutton_mem_2gi_microvm_5m -> ./results/raw/bench/glutton_mem_2gi_microvm_5m-20261016-152948

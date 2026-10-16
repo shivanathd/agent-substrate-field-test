@@ -1,0 +1,545 @@
+==== Run config ====
+  name:           durdir_data_baseline
+  tag:            durdir_data_baseline-20261016-142304
+  files:          /app/tests/durdir.py
+  test_file:      /app/tests/durdir.py
+  duration:       1m
+  users:          1
+  uses_boomer:    True
+  empty stats ok: False
+  dest_prefix:    gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304
+  work_dir:       /tmp/20261016T085339Z-locust-runner
+  extra flags:
+    --durdir-template glutton-durdir-data
+    --resume-mode explicit
+    --durdir-file-size-bytes 8388608
+    --min-wait-time 1.0
+    --max-wait-time 1.0
+====================
+Running: /usr/bin/python3 -m locust --headless -f /app/tests/durdir.py -t 1m -u 1 --csv /tmp/20261016T085339Z-locust-runner/durdir_data_baseline --csv-full-history --master --expect-workers 1 --boomer-config-port 5560 --durdir-template glutton-durdir-data --resume-mode explicit --durdir-file-size-bytes 8388608 --min-wait-time 1.0 --max-wait-time 1.0
+Running: /app/boomer-worker --user-class durdir --config-json {"min_wait_time": 1.0, "max_wait_time": 1.0, "durdir_file_size_bytes": 8388608, "resume_mode": "explicit", "durdir_template": "glutton-durdir-data"} --master-web-port 5560
+[boomer] {"time":"2026-10-16T08:53:39.940276154Z","level":"WARN","msg":"partial telemetry resource","err":"error detecting resource: conflicting Schema URL: https://opentelemetry.io/schemas/1.40.0 and https://opentelemetry.io/schemas/1.43.0"}
+[boomer] {"time":"2026-10-16T08:53:39.940947461Z","level":"INFO","msg":"dynconfig fetch enabled","url":"http://127.0.0.1:5560/boomer-config","poll_interval":10000000000}
+[boomer] {"time":"2026-10-16T08:53:39.940963407Z","level":"INFO","msg":"registered boomer task","user_class":"DurdirUser","user_class_flag":"durdir"}
+[boomer] {"time":"2026-10-16T08:53:39.940982821Z","level":"INFO","msg":"new slave runner"}
+[boomer] {"time":"2026-10-16T08:53:39.940985767Z","level":"INFO","msg":"Boomer is built with gomq support."}
+[locust] [2026-10-16 08:53:40,365] bench-durdir-data-baseline-72jmr/INFO/locust.main: Starting Locust 2.32.7
+[locust] [2026-10-16 08:53:40,370] bench-durdir-data-baseline-72jmr/INFO/common.trace: Tracing initialized for substrate-locust with initial probability 0.0
+[locust] [2026-10-16 08:53:40,373] bench-durdir-data-baseline-72jmr/INFO/common.boomer_config: Serving /boomer-config on 127.0.0.1:5560 for boomer workers
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[boomer] {"time":"2026-10-16T08:53:40.442359638Z","level":"INFO","msg":"Boomer is connected to master(tcp://127.0.0.1:5557) press Ctrl+c to quit."}
+[locust] [2026-10-16 08:53:40,442] bench-durdir-data-baseline-72jmr/INFO/locust.runners: bench-durdir-data-baseline-72jmr_1a9743d16e2e46698fe95a3a64a2b7c5 (index 0) reported as ready. 1 workers connected.
+[locust] [2026-10-16 08:53:41,373] bench-durdir-data-baseline-72jmr/INFO/locust.main: Run time limit set to 60 seconds
+[locust] [2026-10-16 08:53:41,374] bench-durdir-data-baseline-72jmr/INFO/locust.runners: Sending spawn jobs of 1 users at 1.00 spawn rate to 1 ready workers
+[locust] [2026-10-16 08:53:41,374] bench-durdir-data-baseline-72jmr/INFO/common.trace: Test started, updated trace probability to 0.0
+[boomer] {"time":"2026-10-16T08:53:41.376080513Z","level":"INFO","msg":"dynconfig applied","trace_probability":0,"min_wait":1000000000,"max_wait":1000000000,"min_live":0,"max_live":0,"durdir_file_size_bytes":8388608,"resume_mode":"explicit","lifecycle_mode":"suspend","durdir_read_mode":"data","durdir_template":"glutton-durdir-data","mem_target":"","mem_churn":"","mem_read":"","cpu_cores":0,"cpu_duty_cycle":0,"max_pings_per_wake":1,"sweperf_template":"sweperf-astropy-7336","sweperf_total_steps":21,"sweperf_num_cycles":4,"sweperf_poll_interval_ms":100,"agentsession_script":"coding-session","agentsession_script_file":"","agentsession_think_scale":1,"total_actors":0,"spawn_concurrency":0,"actor_deadline":0,"target_rps":0}
+[boomer] {"time":"2026-10-16T08:53:41.376125816Z","level":"INFO","msg":"The total number of clients required is  1"}
+[boomer] {"time":"2026-10-16T08:53:41.376134907Z","level":"INFO","msg":"The current number of clients is 0, 1 clients will be added"}
+[locust] [2026-10-16 08:53:41,385] bench-durdir-data-baseline-72jmr/INFO/locust.runners: All users spawned: {"DurdirUser": 1} (1 total users)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    1     0(0.00%) |     44      44      44     44 |    0.00        0.00
+[locust] http     DurDirServeAfterResume                                                             1     0(0.00%) |     67      67      67     67 |    0.00        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    1     0(0.00%) |     59      59      59     59 |    0.00        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                        2     0(0.00%) |    245     232     258    232 |    0.00        0.00
+[locust] grpc     SuspendActor                                                                       1     0(0.00%) |    593     593     593    593 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        10     0(0.00%) |    144       3     593     67 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    1     0(0.00%) |     44      44      44     44 |    0.00        0.00
+[locust] http     DurDirServeAfterResume                                                             1     0(0.00%) |     67      67      67     67 |    0.00        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    1     0(0.00%) |     59      59      59     59 |    0.00        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                        2     0(0.00%) |    245     232     258    232 |    0.00        0.00
+[locust] grpc     SuspendActor                                                                       1     0(0.00%) |    593     593     593    593 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        10     0(0.00%) |    144       3     593     67 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.50        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.50        0.00
+[locust] http     DurDirOverwrite                                                                    2     0(0.00%) |     38      32      44     32 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                             2     0(0.00%) |     66      65      67     65 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.50        0.00
+[locust] http     DurDirServeWarm                                                                    2     0(0.00%) |     54      50      59     50 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.50        0.00
+[locust] grpc     ResumeActor                                                                        3     0(0.00%) |    238     226     258    230 |    1.00        0.00
+[locust] grpc     SuspendActor                                                                       2     0(0.00%) |    662     593     731    593 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        15     0(0.00%) |    169       3     731     67 |    5.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.17        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.17        0.00
+[locust] http     DurDirOverwrite                                                                    4     0(0.00%) |     39      32      47     33 |    0.33        0.00
+[locust] http     DurDirServeAfterResume                                                             4     0(0.00%) |     72      60      96     65 |    0.33        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.17        0.00
+[locust] http     DurDirServeWarm                                                                    4     0(0.00%) |     54      43      64     50 |    0.33        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.17        0.00
+[locust] grpc     ResumeActor                                                                        5     0(0.00%) |    244     226     258    250 |    0.67        0.00
+[locust] grpc     SuspendActor                                                                       4     0(0.00%) |    627     588     731    590 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        25     0(0.00%) |    183       3     731     67 |    2.83        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.17        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.17        0.00
+[locust] http     DurDirOverwrite                                                                    4     0(0.00%) |     39      32      47     33 |    0.33        0.00
+[locust] http     DurDirServeAfterResume                                                             4     0(0.00%) |     72      60      96     65 |    0.33        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.17        0.00
+[locust] http     DurDirServeWarm                                                                    4     0(0.00%) |     54      43      64     50 |    0.33        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.17        0.00
+[locust] grpc     ResumeActor                                                                        5     0(0.00%) |    244     226     258    250 |    0.67        0.00
+[locust] grpc     SuspendActor                                                                       4     0(0.00%) |    627     588     731    590 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        25     0(0.00%) |    183       3     731     67 |    2.83        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.12        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.12        0.00
+[locust] http     DurDirOverwrite                                                                    5     0(0.00%) |     38      32      47     36 |    0.38        0.00
+[locust] http     DurDirServeAfterResume                                                             5     0(0.00%) |     74      60      96     67 |    0.38        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.12        0.00
+[locust] http     DurDirServeWarm                                                                    5     0(0.00%) |     50      35      64     50 |    0.38        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.12        0.00
+[locust] grpc     ResumeActor                                                                        6     0(0.00%) |    243     226     258    240 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                       5     0(0.00%) |    625     588     731    600 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        30     0(0.00%) |    186       3     731     67 |    2.62        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    6     0(0.00%) |     37      32      47     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                             6     0(0.00%) |     78      60      97     67 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    6     0(0.00%) |     52      35      64     50 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                        7     0(0.00%) |    242     226     258    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                       7     0(0.00%) |    619     588     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        36     0(0.00%) |    200       3     731     80 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    6     0(0.00%) |     37      32      47     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                             6     0(0.00%) |     78      60      97     67 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    6     0(0.00%) |     52      35      64     50 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                        7     0(0.00%) |    242     226     258    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                       7     0(0.00%) |    619     588     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        36     0(0.00%) |    200       3     731     80 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    8     0(0.00%) |     38      31      53     33 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                             8     0(0.00%) |     82      60     115     79 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    8     0(0.00%) |     53      35      64     52 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                        9     0(0.00%) |    237     216     258    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                       8     0(0.00%) |    612     563     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        45     0(0.00%) |    191       3     731     80 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    9     0(0.00%) |     37      31      53     33 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                             9     0(0.00%) |     84      60     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    9     0(0.00%) |     54      35      64     55 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       10     0(0.00%) |    237     216     258    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                       9     0(0.00%) |    611     563     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        50     0(0.00%) |    193       3     731     80 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                    9     0(0.00%) |     37      31      53     33 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                             9     0(0.00%) |     84      60     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                    9     0(0.00%) |     54      35      64     55 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       10     0(0.00%) |    237     216     258    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                       9     0(0.00%) |    611     563     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        50     0(0.00%) |    193       3     731     80 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   11     0(0.00%) |     36      31      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            11     0(0.00%) |     81      50     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   11     0(0.00%) |     56      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       12     0(0.00%) |    241     216     292    240 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      11     0(0.00%) |    616     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        60     0(0.00%) |    196       3     731     80 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   12     0(0.00%) |     36      31      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            12     0(0.00%) |     83      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   12     0(0.00%) |     57      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       13     0(0.00%) |    242     216     292    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      12     0(0.00%) |    614     563     731    600 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        65     0(0.00%) |    197       3     731     83 |    2.10        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   12     0(0.00%) |     36      31      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            12     0(0.00%) |     83      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   12     0(0.00%) |     57      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       13     0(0.00%) |    242     216     292    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      12     0(0.00%) |    614     563     731    600 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        65     0(0.00%) |    197       3     731     83 |    2.10        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   13     0(0.00%) |     37      31      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            13     0(0.00%) |     81      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   13     0(0.00%) |     57      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       14     0(0.00%) |    242     216     292    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      14     0(0.00%) |    617     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        71     0(0.00%) |    204       3     731     83 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   15     0(0.00%) |     36      30      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            15     0(0.00%) |     81      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   15     0(0.00%) |     56      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       16     0(0.00%) |    246     216     292    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      15     0(0.00%) |    614     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        80     0(0.00%) |    199       3     731     80 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   15     0(0.00%) |     36      30      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            15     0(0.00%) |     81      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   15     0(0.00%) |     56      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       16     0(0.00%) |    246     216     292    240 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      15     0(0.00%) |    614     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        80     0(0.00%) |    199       3     731     80 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   16     0(0.00%) |     36      30      53     32 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                            16     0(0.00%) |     81      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   16     0(0.00%) |     57      35      75     59 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       17     0(0.00%) |    247     216     292    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      16     0(0.00%) |    611     563     731    600 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        85     0(0.00%) |    199       3     731     83 |    2.20        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   18     0(0.00%) |     35      30      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            18     0(0.00%) |     82      50     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   18     0(0.00%) |     55      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       19     0(0.00%) |    249     216     292    250 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      18     0(0.00%) |    615     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        95     0(0.00%) |    201       3     731     83 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   18     0(0.00%) |     35      30      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            18     0(0.00%) |     82      50     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   18     0(0.00%) |     55      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       19     0(0.00%) |    249     216     292    250 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      18     0(0.00%) |    615     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        95     0(0.00%) |    201       3     731     83 |    2.30        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   19     0(0.00%) |     35      30      53     33 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            19     0(0.00%) |     83      50     115     87 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   19     0(0.00%) |     56      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       20     0(0.00%) |    251     216     292    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      19     0(0.00%) |    616     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       100     0(0.00%) |    202       3     731     83 |    2.10        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   20     0(0.00%) |     35      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            20     0(0.00%) |     82      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   20     0(0.00%) |     55      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       21     0(0.00%) |    251     216     292    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      21     0(0.00%) |    615     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       106     0(0.00%) |    206       3     731     83 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   20     0(0.00%) |     35      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            20     0(0.00%) |     82      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   20     0(0.00%) |     55      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       21     0(0.00%) |    251     216     292    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      21     0(0.00%) |    615     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       106     0(0.00%) |    206       3     731     83 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   22     0(0.00%) |     35      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            22     0(0.00%) |     81      50     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   22     0(0.00%) |     54      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       23     0(0.00%) |    257     216     346    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      22     0(0.00%) |    613     563     731    610 |    0.40        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       115     0(0.00%) |    203       3     731     83 |    2.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   23     0(0.00%) |     34      30      53     32 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                            23     0(0.00%) |     81      50     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   23     0(0.00%) |     54      35      75     59 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       24     0(0.00%) |    256     216     346    250 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      23     0(0.00%) |    612     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       120     0(0.00%) |    203       3     731     83 |    2.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   23     0(0.00%) |     34      30      53     32 |    0.50        0.00
+[locust] http     DurDirServeAfterResume                                                            23     0(0.00%) |     81      50     115     83 |    0.50        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   23     0(0.00%) |     54      35      75     59 |    0.50        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       24     0(0.00%) |    256     216     346    250 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      23     0(0.00%) |    612     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       120     0(0.00%) |    203       3     731     83 |    2.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   25     0(0.00%) |     34      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            25     0(0.00%) |     80      44     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   25     0(0.00%) |     55      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       26     0(0.00%) |    255     216     346    250 |    0.50        0.00
+[locust] grpc     SuspendActor                                                                      25     0(0.00%) |    615     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       130     0(0.00%) |    203       3     731     83 |    2.20        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   26     0(0.00%) |     34      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            26     0(0.00%) |     80      44     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   26     0(0.00%) |     54      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       27     0(0.00%) |    254     216     346    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      26     0(0.00%) |    616     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       135     0(0.00%) |    203       3     731     83 |    2.10        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.00        0.00
+[locust] http     DurDirOverwrite                                                                   26     0(0.00%) |     34      30      53     32 |    0.40        0.00
+[locust] http     DurDirServeAfterResume                                                            26     0(0.00%) |     80      44     115     83 |    0.40        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.00        0.00
+[locust] http     DurDirServeWarm                                                                   26     0(0.00%) |     54      35      75     59 |    0.40        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.00        0.00
+[locust] grpc     ResumeActor                                                                       27     0(0.00%) |    254     216     346    250 |    0.40        0.00
+[locust] grpc     SuspendActor                                                                      26     0(0.00%) |    616     563     731    610 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       135     0(0.00%) |    203       3     731     83 |    2.10        0.00
+[locust] 
+[locust] [2026-10-16 08:54:41,374] bench-durdir-data-baseline-72jmr/INFO/locust.main: --run-time limit reached, shutting down
+[boomer] {"time":"2026-10-16T08:54:41.375076399Z","level":"INFO","msg":"Recv quit message from master, all the goroutines are stopped"}
+[boomer] {"time":"2026-10-16T08:54:41.375145792Z","level":"INFO","msg":"shutdown"}
+[boomer] {"time":"2026-10-16T08:54:41.375159284Z","level":"INFO","msg":"boomer exited; suspending+deleting actors"}
+[locust] [2026-10-16 08:54:41,375] bench-durdir-data-baseline-72jmr/INFO/locust.runners: Worker 'bench-durdir-data-baseline-72jmr_1a9743d16e2e46698fe95a3a64a2b7c5' (index 0) quit. 0 workers ready.
+[locust] [2026-10-16 08:54:41,375] bench-durdir-data-baseline-72jmr/INFO/locust.runners: The last worker quit, stopping test.
+[locust] [2026-10-16 08:54:42,376] bench-durdir-data-baseline-72jmr/INFO/locust.main: Shutting down (exit code 0)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      3       3       3      3 |    0.02        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     24      24      24     24 |    0.02        0.00
+[locust] http     DurDirOverwrite                                                                   27     0(0.00%) |     34      30      53     32 |    0.46        0.00
+[locust] http     DurDirServeAfterResume                                                            27     0(0.00%) |     80      44     115     83 |    0.46        0.00
+[locust] http     DurDirServeInitial                                                                 1     0(0.00%) |     84      84      84     84 |    0.02        0.00
+[locust] http     DurDirServeWarm                                                                   27     0(0.00%) |     55      35      75     59 |    0.46        0.00
+[locust] http     DurDirWrite                                                                        1     0(0.00%) |     80      80      80     80 |    0.02        0.00
+[locust] grpc     ResumeActor                                                                       28     0(0.00%) |    253     216     346    250 |    0.47        0.00
+[locust] grpc     SuspendActor                                                                      28     0(0.00%) |    616     563     731    610 |    0.47        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                       141     0(0.00%) |    206       3     731     83 |    2.39        0.00
+[locust] 
+[locust] Response time percentiles (approximated)
+[locust] Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust] grpc     CreateActor                                                                             3      3      3      3      3      3      3      3      3      3      3      1
+[locust] grpc     CreateAtespace                                                                         24     24     24     24     24     24     24     24     24     24     24      1
+[locust] http     DurDirOverwrite                                                                        32     33     34     36     44     47     53     53     53     53     53     27
+[locust] http     DurDirServeAfterResume                                                                 83     91     96     97    100    100    120    120    120    120    120     27
+[locust] http     DurDirServeInitial                                                                     84     84     84     84     84     84     84     84     84     84     84      1
+[locust] http     DurDirServeWarm                                                                        59     63     64     64     65     67     75     75     75     75     75     27
+[locust] http     DurDirWrite                                                                            80     80     80     80     80     80     80     80     80     80     80      1
+[locust] grpc     ResumeActor                                                                           250    260    280    280    290    290    350    350    350    350    350     28
+[locust] grpc     SuspendActor                                                                          610    620    650    650    660    720    730    730    730    730    730     28
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust]          Aggregated                                                                             83    240    260    350    610    640    660    720    730    730    730    141
+[locust] 
+Locust exited with code 0
+Stopping boomer...
+Boomer exited with code 0
+Appended trial_summary to /tmp/20261016T085339Z-locust-runner/durdir_data_baseline.jsonl
+[ServerTelemetry] Waiting 69s for the atelet's last export to be scraped...
+[ServerTelemetry] Harvesting Prometheus metrics from http://prometheus.benchmarking.svc.cluster.local:9090 over [1792140819, 1792140882]...
+[ServerTelemetry] Detected steady-state window: [1792140822, 1792140880] (58s), atelet-exported reads (snapshots, active actors) at [1792140857, 1792140915]
+Warning: Range query failed 'ate_workerpool_workers{ate_workerpool_name="benchmark-worker"}': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_cpu_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_cpu_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_memory_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_memory_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_io_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_io_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_cpu_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_memory_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_io_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792140857) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792140857) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792140857) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792140857) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"}) - (sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"}) - (sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792140857) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum) - (sum(atelet_snapshot_size_bytes_sum @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum)': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"}) - (sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"} @ 1792140857) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance, exported_instance) (ate_actor_stats_sampled_actors)': <urlopen error [Errno -2] Name or service not known>
+[ServerTelemetry] Wrote server summary artifact to /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_server_summary.json
+[ServerTelemetry] Appended server_summary row to /tmp/20261016T085339Z-locust-runner/durdir_data_baseline.jsonl
+Appended 59 phase breakdown rows from 118 records
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_status.json -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/status.json
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_logs.txt -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/logs.txt
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_traces.txt -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/traces.txt
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline.jsonl -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/stats.jsonl
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_stats.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/stats.csv
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_exceptions.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/exceptions.csv
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_failures.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/failures.csv
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_stats_history.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/stats_history.csv
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline_server_summary.json -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/server_summary.json
+Uploaded /tmp/20261016T085339Z-locust-runner/durdir_data_baseline.jsonl -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_data_baseline/run_date=2026-10-16/run_ts=1792140819/run_tag=durdir_data_baseline-20261016-142304/durdir_data_baseline.jsonl

@@ -1,0 +1,27 @@
+{
+  "reviewed": "2026-10-16",
+  "method": "Independent read of all 14 scripts by a separate review agent (no edits, read-only checks: bash -n, py_compile, verify.sh), then fixes applied and re-verified.",
+  "findings": [
+    {"sev": "high", "file": "scripts/teardown.sh", "issue": "Loaded the upstream checkout's .ate-dev-env.sh after env.sh, so a pre-existing checkout's PROJECT_ID could win and --delete-project would delete that project.", "fix": "Teardown pins the target from env.sh, refuses if the upstream env names a different project, and refuses any project without the purpose=substrate-field-test label setup.sh applies.", "status": "fixed"},
+    {"sev": "high", "file": "scripts/setup.sh", "issue": "Silently reused an existing project with the same ID, and re-pinned, patched and overwrote an existing substrate checkout.", "fix": "Refuses an existing project without its label; clones into .upstream/substrate by default and refuses a checkout it did not create (marker file).", "status": "fixed"},
+    {"sev": "high", "file": "tests/01, 03, 05", "issue": "State-polling loops had no timeout. A stuck actor hung the test forever; in test 03 that leaves three agents calling the Anthropic API every 45 s.", "fix": "Every wait has a deadline (120-180 s) and fails instead of hanging.", "status": "fixed"},
+    {"sev": "medium", "file": "tests/01, 03, 05", "issue": "set -e exits skipped cleanup, leaving actors, egress policies or running agents behind.", "fix": "trap cleanup EXIT in each test; test 03's trap suspends all agents.", "status": "fixed"},
+    {"sev": "medium", "file": "tests/05", "issue": "Replaced the shared credential-provider namespace-policy ConfigMap and never restored it; left two namespaces behind.", "fix": "Backs the ConfigMap up first and restores it (or deletes ours) on exit; removes both namespaces.", "status": "fixed"},
+    {"sev": "medium", "file": "scripts/teardown.sh", "issue": "Any unrecognised flag fell through to a full teardown.", "fix": "Unknown options exit 2 before doing anything.", "status": "fixed"},
+    {"sev": "medium", "file": "scripts/teardown.sh", "issue": "Printed 'project deleted' even if the delete failed; verify counted a gcloud error as zero resources and skipped Artifact Registry.", "fix": "Delete failure exits 1; listings that error show ERR and fail verification; Artifact Registry repositories are checked.", "status": "fixed"},
+    {"sev": "medium", "file": "scripts/verify.sh", "issue": "A failed rebuild left the old files in place so the lineage check still passed; on real drift it overwrote the originals.", "fix": "A rebuild failure is a FAIL; originals are restored after comparison so verify never changes the repo.", "status": "fixed"},
+    {"sev": "medium", "file": "bench/run-locust.py", "issue": "A timed-out Job kept running into the next test; the first pod failure was read as Job failure despite retries.", "fix": "Waits on the Job's Complete/Failed condition; deletes a timed-out Job.", "status": "fixed"},
+    {"sev": "medium", "file": "bench/run-locust.py", "issue": "Reported OK when stats.jsonl never arrived.", "fix": "OK requires a Complete Job and a stats.jsonl on disk.", "status": "fixed"},
+    {"sev": "medium", "file": "scripts/setup.sh", "issue": "grep -q under pipefail could break gcloud's pipe and create a duplicate budget.", "fix": "grep -x > /dev/null instead of -q.", "status": "fixed"},
+    {"sev": "medium", "file": "scripts/setup.sh", "issue": "go install may put kubectl-ate outside PATH; every test then fails.", "fix": "Checks and prints the PATH line to add.", "status": "fixed"},
+    {"sev": "low", "file": "results/raw/05-*.log", "issue": "The published F5 log contained the (random, already deleted) injected test token.", "fix": "Masked in the log; the test now masks it when printing.", "status": "fixed"},
+    {"sev": "low", "file": "tests/05", "issue": "grep -qw treated the dots in an IP as wildcards.", "fix": "grep -Fqw.", "status": "fixed"},
+    {"sev": "low", "file": "bench/run-all.sh", "issue": "An unknown group name deleted the current workloads and redeployed with empty arguments.", "fix": "Unknown groups are skipped before anything is deleted.", "status": "fixed"},
+    {"sev": "low", "file": "scripts/setup.sh", "issue": "Silently skipped the bash 3.2 patch when it no longer applied.", "fix": "Distinguishes applied / already applied / no longer applies, and says which.", "status": "fixed"},
+    {"sev": "low", "file": "tests/03", "issue": "Python 3.9/3.10 fromisoformat rejects Go's variable-length fractional seconds.", "fix": "Parses whole seconds with strptime and adds the fraction.", "status": "fixed"},
+    {"sev": "low", "file": "report/build_report.py", "issue": "Crashed if the oversubscription run was missing.", "fix": "Guarded.", "status": "fixed"},
+    {"sev": "low", "file": "bench/summarize.py, tests/*", "issue": "Wrote output relative to the current directory.", "fix": "Paths are relative to the repo; tests cd to the repo root.", "status": "fixed"},
+    {"sev": "low", "file": "scripts/sanitize.py, scripts/verify.sh", "issue": "--replace without '=' crashed (an empty OLD would corrupt files); a trailing --forbid tripped set -u.", "fix": "Both validated with a clear error.", "status": "fixed"},
+    {"sev": "info", "file": "scripts/setup.sh", "issue": "setup.sh has never been run end to end; it was assembled from steps that were each run individually during the field test.", "fix": "Stated in the README. A clean-room run is the next validation step.", "status": "open"}
+  ]
+}

@@ -1,0 +1,66 @@
+Deploying workloads (worker_count=1, actor_memory=2560Mi, actor_cpu=1, worker_memory=unset, storage_class=none, otlp_endpoint=http://opentelemetry-collector.gke-managed-otel.svc.cluster.local:4317)...
+2026/10/16 15:28:23 Using base gcr.io/distroless/static-debian13:latest@sha256:f2ea2709ac8db56323cbd7d014277f32cb572d9ea124b0076f7aafe5980678fe for go.ate.dev/substrate/cmd/ateworker-microvm
+2026/10/16 15:28:25 git doesn't contain any tags. Tag info will not be available
+git is in a dirty state
+Please check in your pipeline what can be changing the following files:
+ M benchmarking/workloads/deploy.sh
+
+2026/10/16 15:28:25 Building go.ate.dev/substrate/cmd/ateworker-microvm for linux/amd64
+2026/10/16 15:28:26 Publishing gcr.io/<PROJECT_ID>/ate-images/ateworker-microvm-8fe052f8b161f4083ecf6c1a2c78d1ce:latest
+2026/10/16 15:28:28 existing manifest: latest@sha256:614fc2f063712466d1939d0a714bcc4021e2f491602a2ebe7a48ee56f7902d46
+2026/10/16 15:28:28 existing manifest: sha256-614fc2f063712466d1939d0a714bcc4021e2f491602a2ebe7a48ee56f7902d46.sbom@sha256:fcddc3dc00f17c1232ac49eba7893be925b33c28059ceb6135988956f467fd78
+2026/10/16 15:28:28 Published SBOM gcr.io/<PROJECT_ID>/ate-images/ateworker-microvm-8fe052f8b161f4083ecf6c1a2c78d1ce:sha256-614fc2f063712466d1939d0a714bcc4021e2f491602a2ebe7a48ee56f7902d46.sbom
+2026/10/16 15:28:28 Published gcr.io/<PROJECT_ID>/ate-images/ateworker-microvm-8fe052f8b161f4083ecf6c1a2c78d1ce@sha256:614fc2f063712466d1939d0a714bcc4021e2f491602a2ebe7a48ee56f7902d46
+namespace/benchmark-workloads created
+workerpool.ate.dev/benchmark-worker created
+Waiting for worker pool to be ready (timeout: 300s)...
+deployment.apps/benchmark-worker condition met
+deployment "benchmark-worker" successfully rolled out
+ATESPACE              NAME    SANDBOX CLASS   GOLDEN TAG   ERROR   AGE
+benchmark-workloads   sleep   microvm                              0s
+2026/10/16 15:28:54 Using base gcr.io/distroless/static-debian13:latest@sha256:f2ea2709ac8db56323cbd7d014277f32cb572d9ea124b0076f7aafe5980678fe for go.ate.dev/substrate/cmd/benchmarking/glutton
+2026/10/16 15:28:55 git doesn't contain any tags. Tag info will not be available
+git is in a dirty state
+Please check in your pipeline what can be changing the following files:
+ M benchmarking/workloads/deploy.sh
+
+2026/10/16 15:28:55 Building go.ate.dev/substrate/cmd/benchmarking/glutton for linux/amd64
+2026/10/16 15:28:56 Publishing gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:latest
+2026/10/16 15:28:59 existing manifest: latest@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+2026/10/16 15:28:59 existing manifest: sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom@sha256:2f4b86dbe418c47e40b1ccdb94c90746cbaa972e07edfe171a54cf6c90494ca7
+2026/10/16 15:28:59 Published SBOM gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom
+2026/10/16 15:28:59 Published gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+ATESPACE              NAME      SANDBOX CLASS   GOLDEN TAG   ERROR   AGE
+benchmark-workloads   glutton   microvm                              0s
+2026/10/16 15:29:09 Using base gcr.io/distroless/static-debian13:latest@sha256:f2ea2709ac8db56323cbd7d014277f32cb572d9ea124b0076f7aafe5980678fe for go.ate.dev/substrate/cmd/benchmarking/glutton
+2026/10/16 15:29:11 git doesn't contain any tags. Tag info will not be available
+git is in a dirty state
+Please check in your pipeline what can be changing the following files:
+ M benchmarking/workloads/deploy.sh
+
+2026/10/16 15:29:11 Building go.ate.dev/substrate/cmd/benchmarking/glutton for linux/amd64
+2026/10/16 15:29:12 Publishing gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:latest
+2026/10/16 15:29:14 existing manifest: latest@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+2026/10/16 15:29:14 existing manifest: sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom@sha256:2f4b86dbe418c47e40b1ccdb94c90746cbaa972e07edfe171a54cf6c90494ca7
+2026/10/16 15:29:14 Published SBOM gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom
+2026/10/16 15:29:14 Published gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+ATESPACE              NAME                  SANDBOX CLASS   GOLDEN TAG   ERROR   AGE
+benchmark-workloads   glutton-durdir-data   microvm                              0s
+2026/10/16 15:29:24 Using base gcr.io/distroless/static-debian13:latest@sha256:f2ea2709ac8db56323cbd7d014277f32cb572d9ea124b0076f7aafe5980678fe for go.ate.dev/substrate/cmd/benchmarking/glutton
+2026/10/16 15:29:25 git doesn't contain any tags. Tag info will not be available
+git is in a dirty state
+Please check in your pipeline what can be changing the following files:
+ M benchmarking/workloads/deploy.sh
+
+2026/10/16 15:29:25 Building go.ate.dev/substrate/cmd/benchmarking/glutton for linux/amd64
+2026/10/16 15:29:26 Publishing gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:latest
+2026/10/16 15:29:28 existing manifest: latest@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+2026/10/16 15:29:28 existing manifest: sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom@sha256:2f4b86dbe418c47e40b1ccdb94c90746cbaa972e07edfe171a54cf6c90494ca7
+2026/10/16 15:29:28 Published SBOM gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524:sha256-a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7.sbom
+2026/10/16 15:29:28 Published gcr.io/<PROJECT_ID>/ate-images/glutton-4b3667ae99a537903d62dbe4a02d5524@sha256:a2c01271b3179d040369727e249d41ec581d11c2581cdd1fa374df657d9b72a7
+ATESPACE              NAME                  SANDBOX CLASS   GOLDEN TAG   ERROR   AGE
+benchmark-workloads   glutton-durdir-full   microvm                              0s
+Waiting for the benchmark-workloads/sleep golden snapshot...
+Waiting for the benchmark-workloads/glutton golden snapshot...
+Waiting for the benchmark-workloads/glutton-durdir-data golden snapshot...
+Waiting for the benchmark-workloads/glutton-durdir-full golden snapshot...

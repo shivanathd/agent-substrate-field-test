@@ -1,0 +1,411 @@
+==== Run config ====
+  name:           durdir_implicit_resume
+  tag:            durdir_implicit_resume-20261016-134226
+  files:          /app/tests/durdir.py
+  test_file:      /app/tests/durdir.py
+  duration:       1m
+  users:          1
+  uses_boomer:    True
+  empty stats ok: False
+  dest_prefix:    gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226
+  work_dir:       /tmp/20261016T081233Z-locust-runner
+  extra flags:
+    --durdir-template glutton-durdir-data
+    --resume-mode implicit
+    --durdir-file-size-bytes 8388608
+    --min-wait-time 1.0
+    --max-wait-time 1.0
+====================
+Running: /usr/bin/python3 -m locust --headless -f /app/tests/durdir.py -t 1m -u 1 --csv /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume --csv-full-history --master --expect-workers 1 --boomer-config-port 5560 --durdir-template glutton-durdir-data --resume-mode implicit --durdir-file-size-bytes 8388608 --min-wait-time 1.0 --max-wait-time 1.0
+Running: /app/boomer-worker --user-class durdir --config-json {"min_wait_time": 1.0, "max_wait_time": 1.0, "durdir_file_size_bytes": 8388608, "resume_mode": "implicit", "durdir_template": "glutton-durdir-data"} --master-web-port 5560
+[boomer] {"time":"2026-10-16T08:12:33.556113924Z","level":"WARN","msg":"partial telemetry resource","err":"error detecting resource: conflicting Schema URL: https://opentelemetry.io/schemas/1.40.0 and https://opentelemetry.io/schemas/1.43.0"}
+[boomer] {"time":"2026-10-16T08:12:33.556815317Z","level":"INFO","msg":"dynconfig fetch enabled","url":"http://127.0.0.1:5560/boomer-config","poll_interval":10000000000}
+[boomer] {"time":"2026-10-16T08:12:33.556832325Z","level":"INFO","msg":"registered boomer task","user_class":"DurdirUser","user_class_flag":"durdir"}
+[boomer] {"time":"2026-10-16T08:12:33.556852624Z","level":"INFO","msg":"new slave runner"}
+[boomer] {"time":"2026-10-16T08:12:33.556855506Z","level":"INFO","msg":"Boomer is built with gomq support."}
+[locust] [2026-10-16 08:12:33,979] bench-durdir-implicit-resume-6z2zr/INFO/locust.main: Starting Locust 2.32.7
+[locust] [2026-10-16 08:12:33,984] bench-durdir-implicit-resume-6z2zr/INFO/common.trace: Tracing initialized for substrate-locust with initial probability 0.0
+[locust] [2026-10-16 08:12:33,987] bench-durdir-implicit-resume-6z2zr/INFO/common.boomer_config: Serving /boomer-config on 127.0.0.1:5560 for boomer workers
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[boomer] {"time":"2026-10-16T08:12:34.057926537Z","level":"INFO","msg":"Boomer is connected to master(tcp://127.0.0.1:5557) press Ctrl+c to quit."}
+[locust] [2026-10-16 08:12:34,058] bench-durdir-implicit-resume-6z2zr/INFO/locust.runners: bench-durdir-implicit-resume-6z2zr_63bca889520048f09c818db31c865fa0 (index 0) reported as ready. 1 workers connected.
+[locust] [2026-10-16 08:12:34,988] bench-durdir-implicit-resume-6z2zr/INFO/locust.main: Run time limit set to 60 seconds
+[locust] [2026-10-16 08:12:34,988] bench-durdir-implicit-resume-6z2zr/INFO/locust.runners: Sending spawn jobs of 1 users at 1.00 spawn rate to 1 ready workers
+[locust] [2026-10-16 08:12:34,988] bench-durdir-implicit-resume-6z2zr/INFO/common.trace: Test started, updated trace probability to 0.0
+[boomer] {"time":"2026-10-16T08:12:34.990489241Z","level":"INFO","msg":"dynconfig applied","trace_probability":0,"min_wait":1000000000,"max_wait":1000000000,"min_live":0,"max_live":0,"durdir_file_size_bytes":8388608,"resume_mode":"implicit","lifecycle_mode":"suspend","durdir_read_mode":"data","durdir_template":"glutton-durdir-data","mem_target":"","mem_churn":"","mem_read":"","cpu_cores":0,"cpu_duty_cycle":0,"max_pings_per_wake":1,"sweperf_template":"sweperf-astropy-7336","sweperf_total_steps":21,"sweperf_num_cycles":4,"sweperf_poll_interval_ms":100,"agentsession_script":"coding-session","agentsession_script_file":"","agentsession_think_scale":1,"total_actors":0,"spawn_concurrency":0,"actor_deadline":0,"target_rps":0}
+[boomer] {"time":"2026-10-16T08:12:34.990528262Z","level":"INFO","msg":"The total number of clients required is  1"}
+[boomer] {"time":"2026-10-16T08:12:34.990532358Z","level":"INFO","msg":"The current number of clients is 0, 1 clients will be added"}
+[locust] [2026-10-16 08:12:35,000] bench-durdir-implicit-resume-6z2zr/INFO/locust.runners: All users spawned: {"DurdirUser": 1} (1 total users)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         2     0(0.00%) |     11       2      21      2 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         2     0(0.00%) |     11       2      21      2 |    0.00        0.00
+[locust] 
+[boomer] {"time":"2026-10-16T08:12:40.042333773Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-917c1ffe-507c-4f34-b37e-d834ea96b7b9 unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.25        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.25        0.00
+[locust] grpc     DeleteActor                                                                        1     0(0.00%) |      5       5       5      5 |    0.00        0.00
+[locust] http     DurDirWrite                                                                        1   1(100.00%) |   5018    5018    5018   5018 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         4    1(25.00%) |   1261       2    5018      5 |    0.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        2     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     2     0(0.00%) |     11       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        1     0(0.00%) |      5       5       5      5 |    0.00        0.00
+[locust] http     DurDirWrite                                                                        1   1(100.00%) |   5018    5018    5018   5018 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         6    1(16.67%) |    841       1    5018      3 |    0.40        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        2     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     2     0(0.00%) |     11       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        1     0(0.00%) |      5       5       5      5 |    0.00        0.00
+[locust] http     DurDirWrite                                                                        1   1(100.00%) |   5018    5018    5018   5018 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         6    1(16.67%) |    841       1    5018      3 |    0.40        0.00
+[locust] 
+[boomer] {"time":"2026-10-16T08:12:46.059156711Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-d11b9e03-63b3-4eda-8e1d-6ad585d3093b unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        2     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     2     0(0.00%) |     11       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        1     0(0.00%) |      5       5       5      5 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        2   2(100.00%) |   5010    5002    5018   5002 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         7    2(28.57%) |   1436       1    5018      5 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        3     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     3     0(0.00%) |      7       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        2     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        2   2(100.00%) |   5010    5002    5018   5002 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        10    2(20.00%) |   1005       1    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        3     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     3     0(0.00%) |      7       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        2     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        2   2(100.00%) |   5010    5002    5018   5002 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        10    2(20.00%) |   1005       1    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:12:52.073619355Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-147216de-b878-4f5c-9808-1d216a12e156 unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        3     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     3     0(0.00%) |      7       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        2     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        2   2(100.00%) |   5010    5002    5018   5002 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        10    2(20.00%) |   1005       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        4     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     4     0(0.00%) |      6       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        3     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        3   3(100.00%) |   5007    5002    5018   5002 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        14    3(21.43%) |   1076       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        4     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     4     0(0.00%) |      6       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        3     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        3   3(100.00%) |   5007    5002    5018   5002 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        14    3(21.43%) |   1076       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:12:58.088063004Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-401f4df3-62f6-42fc-91ea-5066eb6e96cd unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        4     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     4     0(0.00%) |      6       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        3     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        3   3(100.00%) |   5007    5002    5018   5002 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        14    3(21.43%) |   1076       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        5     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     5     0(0.00%) |      5       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        4     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        4   4(100.00%) |   5005    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        18    4(22.22%) |   1115       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        5     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     5     0(0.00%) |      5       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        4     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        4   4(100.00%) |   5005    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        18    4(22.22%) |   1115       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:04.10270859Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-53c73fda-84f4-4174-96b5-5d385dccb2f5 unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        5     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     5     0(0.00%) |      5       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        4     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        4   4(100.00%) |   5005    5001    5018   5001 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        18    4(22.22%) |   1115       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        6     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     6     0(0.00%) |      4       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        5     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        5   5(100.00%) |   5005    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        22    5(22.73%) |   1140       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        6     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     6     0(0.00%) |      4       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        5     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        5   5(100.00%) |   5005    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        22    5(22.73%) |   1140       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:10.115909972Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-304b9650-65e7-4427-a668-7f76ac72edc7 unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        6     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     6     0(0.00%) |      4       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        5     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        5   5(100.00%) |   5005    5001    5018   5001 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        22    5(22.73%) |   1140       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        7     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     7     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        6     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        6   6(100.00%) |   5004    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        26    6(23.08%) |   1157       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        7     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     7     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        6     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        6   6(100.00%) |   5004    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        26    6(23.08%) |   1157       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:16.131701017Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-8c4dbb6e-8c5a-443a-b721-c9138a0a625a unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        7     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     7     0(0.00%) |      3       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        6     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        6   6(100.00%) |   5004    5001    5018   5001 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        26    6(23.08%) |   1157       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        8     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     8     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        7     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        7   7(100.00%) |   5004    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        30    7(23.33%) |   1170       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        8     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     8     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        7     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        7   7(100.00%) |   5004    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        30    7(23.33%) |   1170       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:22.146242912Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-b379ef75-e571-4280-8498-9f577fc2a4e8 unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        8     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     8     0(0.00%) |      3       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        7     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        7   7(100.00%) |   5004    5001    5018   5001 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        30    7(23.33%) |   1170       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        9     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     9     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        8     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        8   8(100.00%) |   5003    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        34    8(23.53%) |   1179       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        9     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                     9     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        8     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        8   8(100.00%) |   5003    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        34    8(23.53%) |   1179       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:28.160466661Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-24e1b77f-7a10-42c7-a0ea-479ad7e25ebf unavailable: no worker has room for the actor"}
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        9     0(0.00%) |      2       2       3      2 |    0.10        0.00
+[locust] grpc     CreateAtespace                                                                     9     0(0.00%) |      3       1      21      1 |    0.10        0.00
+[locust] grpc     DeleteActor                                                                        8     0(0.00%) |      4       4       5      4 |    0.20        0.00
+[locust] http     DurDirWrite                                                                        8   8(100.00%) |   5003    5001    5018   5001 |    0.20        0.20
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        34    8(23.53%) |   1179       0    5018      3 |    0.60        0.20
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                       10     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                    10     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        9     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        9   9(100.00%) |   5003    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        38    9(23.68%) |   1187       0    5018      3 |    0.60        0.10
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                       10     0(0.00%) |      2       2       3      2 |    0.20        0.00
+[locust] grpc     CreateAtespace                                                                    10     0(0.00%) |      3       1      21      1 |    0.20        0.00
+[locust] grpc     DeleteActor                                                                        9     0(0.00%) |      4       4       5      4 |    0.10        0.00
+[locust] http     DurDirWrite                                                                        9   9(100.00%) |   5003    5001    5018   5001 |    0.10        0.10
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        38    9(23.68%) |   1187       0    5018      3 |    0.60        0.10
+[locust] 
+[boomer] {"time":"2026-10-16T08:13:34.1744767Z","level":"WARN","msg":"durdir on_start failed; goroutine will retry next iter","err":"initial WriteDisk failed: HTTP 503: actor benchmark/sb-d79fd678-0a6d-4960-9fd4-3c768da543d0 unavailable: no worker has room for the actor"}
+[locust] [2026-10-16 08:13:34,988] bench-durdir-implicit-resume-6z2zr/INFO/locust.main: --run-time limit reached, shutting down
+[boomer] {"time":"2026-10-16T08:13:34.989383729Z","level":"INFO","msg":"Recv quit message from master, all the goroutines are stopped"}
+[boomer] {"time":"2026-10-16T08:13:34.989457493Z","level":"INFO","msg":"shutdown"}
+[boomer] {"time":"2026-10-16T08:13:34.98947032Z","level":"INFO","msg":"boomer exited; suspending+deleting actors"}
+[locust] [2026-10-16 08:13:34,989] bench-durdir-implicit-resume-6z2zr/INFO/locust.runners: Worker 'bench-durdir-implicit-resume-6z2zr_63bca889520048f09c818db31c865fa0' (index 0) quit. 0 workers ready.
+[locust] [2026-10-16 08:13:34,989] bench-durdir-implicit-resume-6z2zr/INFO/locust.runners: The last worker quit, stopping test.
+[locust] [2026-10-16 08:13:35,991] bench-durdir-implicit-resume-6z2zr/INFO/locust.main: Shutting down (exit code 1)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                       10     0(0.00%) |      2       2       3      2 |    0.18        0.00
+[locust] grpc     CreateAtespace                                                                    10     0(0.00%) |      3       1      21      1 |    0.18        0.00
+[locust] grpc     DeleteActor                                                                        9     0(0.00%) |      4       4       5      4 |    0.16        0.00
+[locust] http     DurDirWrite                                                                        9   9(100.00%) |   5003    5001    5018   5001 |    0.16        0.16
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        38    9(23.68%) |   1187       0    5018      3 |    0.67        0.16
+[locust] 
+[locust] Response time percentiles (approximated)
+[locust] Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust] grpc     CreateActor                                                                             2      2      2      2      3      3      3      3      3      3      3     10
+[locust] grpc     CreateAtespace                                                                          1      1      1      1     21     21     21     21     21     21     21     10
+[locust] grpc     DeleteActor                                                                             4      4      5      5      5      5      5      5      5      5      5      9
+[locust] http     DurDirWrite                                                                          5000   5000   5000   5000   5000   5000   5000   5000   5000   5000   5000      9
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust]          Aggregated                                                                              4      5     21   5000   5000   5000   5000   5000   5000   5000   5000     38
+[locust] 
+[locust] Error report
+[locust] # occurrences      Error                                                                                               
+[locust] ------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-917c1ffe-507c-4f34-b37e-d834ea96b7b9 unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-d11b9e03-63b3-4eda-8e1d-6ad585d3093b unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-147216de-b878-4f5c-9808-1d216a12e156 unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-401f4df3-62f6-42fc-91ea-5066eb6e96cd unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-53c73fda-84f4-4174-96b5-5d385dccb2f5 unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-304b9650-65e7-4427-a668-7f76ac72edc7 unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-8c4dbb6e-8c5a-443a-b721-c9138a0a625a unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-b379ef75-e571-4280-8498-9f577fc2a4e8 unavailable: no worker has room for the actor
+[locust] 1                  http DurDirWrite: HTTP 503: actor benchmark/sb-24e1b77f-7a10-42c7-a0ea-479ad7e25ebf unavailable: no worker has room for the actor
+[locust] ------------------|---------------------------------------------------------------------------------------------------------------------------------------------
+[locust] 
+Locust exited with code 1
+Stopping boomer...
+Boomer exited with code 0
+Appended trial_summary to /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume.jsonl
+[ServerTelemetry] Waiting 69s for the atelet's last export to be scraped...
+[ServerTelemetry] Harvesting Prometheus metrics from http://prometheus.benchmarking.svc.cluster.local:9090 over [1792138353, 1792138416]...
+[ServerTelemetry] Detected steady-state window: [1792138355, 1792138414] (59s), atelet-exported reads (snapshots, active actors) at [1792138390, 1792138449]
+Warning: Range query failed 'ate_workerpool_workers{ate_workerpool_name="benchmark-worker"}': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_cpu_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_cpu_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_memory_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_memory_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance) (rate(container_pressure_io_waiting_seconds_total{container="node"}[1m])) * 100 and on (instance) sum by (instance) (rate(container_pressure_io_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_cpu_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_memory_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (pod) (rate(container_pressure_io_waiting_seconds_total{pod=~"benchmark-worker.*", container="", id=~".*[/-]pod[^/]+(\\.slice)?"}[1m])) * 100': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792138390) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792138390) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792138390) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) - (sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"} @ 1792138390) or sum by (le) (atelet_snapshot_size_bytes_bucket{file_name=~"pages.img|memory-ranges"}) * 0)) / 1048576': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"}) - (sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_count{file_name=~"pages.img|memory-ranges"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"}) - (sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum{file_name=~"pages.img|memory-ranges"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_restore_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.5, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.9, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.95, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'histogram_quantile(0.99, sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) - (sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"} @ 1792138390) or sum by (le) (ate_actor_checkpoint_duration_seconds_bucket{ate_snapshot_phase="total"}) * 0)) / 1.0': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum) - (sum(atelet_snapshot_size_bytes_sum @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(atelet_snapshot_size_bytes_sum)': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"}) - (sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_restore_duration_seconds_count{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_sum{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"}) - (sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"} @ 1792138390) or vector(0))': <urlopen error [Errno -2] Name or service not known>
+Warning: Instant query failed 'sum(ate_actor_checkpoint_duration_seconds_count{ate_snapshot_phase="total"})': <urlopen error [Errno -2] Name or service not known>
+Warning: Range query failed 'sum by (instance, exported_instance) (ate_actor_stats_sampled_actors)': <urlopen error [Errno -2] Name or service not known>
+[ServerTelemetry] Wrote server summary artifact to /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_server_summary.json
+[ServerTelemetry] Appended server_summary row to /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume.jsonl
+Warning: no timing breakdown records in the node logs (3 pods read, 0 failed); check the runner's pods/log access if the run made requests
+Appended 1 phase breakdown rows from 0 records
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_status.json -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/status.json
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_logs.txt -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/logs.txt
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_traces.txt -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/traces.txt
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume.jsonl -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/stats.jsonl
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_stats.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/stats.csv
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_exceptions.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/exceptions.csv
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_failures.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/failures.csv
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_stats_history.csv -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/stats_history.csv
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume_server_summary.json -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/server_summary.json
+Uploaded /tmp/20261016T081233Z-locust-runner/durdir_implicit_resume.jsonl -> gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/durdir_implicit_resume/run_date=2026-10-16/run_ts=1792138353/run_tag=durdir_implicit_resume-20261016-134226/durdir_implicit_resume.jsonl

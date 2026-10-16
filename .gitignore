@@ -1,0 +1,10 @@
+__pycache__/
+.archify/
+.ate-dev-env.sh
+.DS_Store
+.upstream/
+*.zst
+*.zstd
+docs/internal/
+results/raw/**/traces.txt
+scripts/env.sh

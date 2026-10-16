@@ -1,0 +1,6 @@
+=== group durdir: workers=1 actorMemory=- class=gvisor  14:20:39
+    workloads ready in 145s
+OK durdir_data_baseline -> ./results/raw/bench/durdir_data_baseline-20261016-142304
+OK durdir_implicit_resume -> ./results/raw/bench/durdir_implicit_resume-20261016-142611
+OK durdir_full_baseline -> ./results/raw/bench/durdir_full_baseline-20261016-142855
+=== group microvm: workers=1 actorMemory=1536Mi class=microvm  14:31:36

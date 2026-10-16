@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "test_name": "glutton_mem_1gi_gvisor_5m",
+    "tag": "glutton_mem_1gi_gvisor_5m-20261016-150218",
+    "data_timestamp": "2026-10-16T09:32:34Z",
+    "prom_url": "http://prometheus.benchmarking.svc.cluster.local:9090",
+    "start_ts": 1792143154,
+    "end_ts": 1792143457,
+    "steady_start_ts": 1792143156,
+    "steady_end_ts": 1792143455,
+    "atelet_lag_s": 70
+  },
+  "cluster_packing": {
+    "summary": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "timeseries": []
+  },
+  "node_psi": {
+    "cpu_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "mem_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "io_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "nodes": 0
+  },
+  "pod_psi": {
+    "cpu_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "mem_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "io_stall_pct": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "pods": 0
+  },
+  "snapshots": {
+    "size_p50_mb": null,
+    "size_p90_mb": null,
+    "size_p95_mb": null,
+    "size_p99_mb": null,
+    "size_avg_mb": null,
+    "checkpoints_in_window": null,
+    "checkpoints_cumulative": null,
+    "restore_p50_s": null,
+    "restore_p90_s": null,
+    "restore_p95_s": null,
+    "restore_p99_s": null,
+    "restore_mean_s": null,
+    "checkpoint_p50_s": null,
+    "checkpoint_p90_s": null,
+    "checkpoint_p95_s": null,
+    "checkpoint_p99_s": null,
+    "checkpoint_mean_s": null,
+    "checkpoint_mb_s": null
+  },
+  "active_actors": {
+    "summary": {
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null,
+      "avg": null
+    },
+    "atelets": null,
+    "timeseries": []
+  }
+}

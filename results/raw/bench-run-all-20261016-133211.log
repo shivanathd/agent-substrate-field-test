@@ -1,0 +1,21 @@
+=== group base: workers=1 actorMemory=- class=gvisor  13:32:11
+    workloads ready in 139s
+OK glutton_baseline_1_user -> ./results/raw/bench/glutton_baseline_1_user-20261016-133430
+OK glutton_baseline_1_user_pause -> ./results/raw/bench/glutton_baseline_1_user_pause-20261016-133709
+OK durdir_data_baseline -> ./results/raw/bench/durdir_data_baseline-20261016-133947
+OK durdir_implicit_resume -> ./results/raw/bench/durdir_implicit_resume-20261016-134226
+OK durdir_full_baseline -> ./results/raw/bench/durdir_full_baseline-20261016-134506
+=== group mem1g: workers=1 actorMemory=1536Mi class=gvisor  13:47:46
+    workloads ready in 132s
+OK glutton_mem_1gi_gvisor -> ./results/raw/bench/glutton_mem_1gi_gvisor-20261016-134959
+OK glutton_mem_1gi_gvisor_pause -> ./results/raw/bench/glutton_mem_1gi_gvisor_pause-20261016-135246
+=== group mem2g: workers=1 actorMemory=2560Mi class=gvisor  13:55:46
+    workloads ready in 136s
+OK glutton_mem_2gi_gvisor -> ./results/raw/bench/glutton_mem_2gi_gvisor-20261016-135802
+=== group w5: workers=5 actorMemory=- class=gvisor  14:00:49
+    workloads ready in 153s
+OK glutton_baseline_5_users -> ./results/raw/bench/glutton_baseline_5_users-20261016-140322
+=== group w10: workers=10 actorMemory=- class=gvisor  14:06:09
+    workloads ready in 156s
+OK glutton_baseline_10_users -> ./results/raw/bench/glutton_baseline_10_users-20261016-140845
+OK glutton_oversubscribe_15_users -> ./results/raw/bench/glutton_oversubscribe_15_users-20261016-141150

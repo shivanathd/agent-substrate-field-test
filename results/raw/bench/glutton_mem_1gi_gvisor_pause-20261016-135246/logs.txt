@@ -1,0 +1,487 @@
+==== Run config ====
+  name:           glutton_mem_1gi_gvisor_pause
+  tag:            glutton_mem_1gi_gvisor_pause-20261016-135246
+  files:          /app/tests/glutton.py
+  test_file:      /app/tests/glutton.py
+  duration:       1m
+  users:          1
+  uses_boomer:    True
+  empty stats ok: False
+  dest_prefix:    gs://snapshot-substrate-test-<PROJECT_ID>/bench/runs/glutton_mem_1gi_gvisor_pause/run_date=2026-10-16/run_ts=1792138993/run_tag=glutton_mem_1gi_gvisor_pause-20261016-135246
+  work_dir:       /tmp/20261016T082313Z-locust-runner
+  extra flags:
+    --lifecycle-mode pause
+    --mem-target 1Gi
+    --mem-churn 64Mi
+    --mem-read all
+    --min-wait-time 1.0
+    --max-wait-time 1.0
+====================
+Running: /usr/bin/python3 -m locust --headless -f /app/tests/glutton.py -t 1m -u 1 --csv /tmp/20261016T082313Z-locust-runner/glutton_mem_1gi_gvisor_pause --csv-full-history --master --expect-workers 1 --boomer-config-port 5560 --lifecycle-mode pause --mem-target 1Gi --mem-churn 64Mi --mem-read all --min-wait-time 1.0 --max-wait-time 1.0
+Running: /app/boomer-worker --user-class glutton --config-json {"min_wait_time": 1.0, "max_wait_time": 1.0, "lifecycle_mode": "pause", "mem_target": "1Gi", "mem_churn": "64Mi", "mem_read": "all"} --master-web-port 5560
+[boomer] {"time":"2026-10-16T08:23:13.504175108Z","level":"WARN","msg":"partial telemetry resource","err":"error detecting resource: conflicting Schema URL: https://opentelemetry.io/schemas/1.40.0 and https://opentelemetry.io/schemas/1.43.0"}
+[boomer] {"time":"2026-10-16T08:23:13.505017236Z","level":"INFO","msg":"dynconfig fetch enabled","url":"http://127.0.0.1:5560/boomer-config","poll_interval":10000000000}
+[boomer] {"time":"2026-10-16T08:23:13.505034598Z","level":"INFO","msg":"registered boomer task","user_class":"GluttonUser","user_class_flag":"glutton"}
+[boomer] {"time":"2026-10-16T08:23:13.505076328Z","level":"INFO","msg":"new slave runner"}
+[boomer] {"time":"2026-10-16T08:23:13.505079834Z","level":"INFO","msg":"Boomer is built with gomq support."}
+[locust] [2026-10-16 08:23:13,922] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.main: Starting Locust 2.32.7
+[locust] [2026-10-16 08:23:13,927] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/common.trace: Tracing initialized for substrate-locust with initial probability 0.0
+[locust] [2026-10-16 08:23:13,930] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/common.boomer_config: Serving /boomer-config on 127.0.0.1:5560 for boomer workers
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[boomer] {"time":"2026-10-16T08:23:14.00694924Z","level":"INFO","msg":"Boomer is connected to master(tcp://127.0.0.1:5557) press Ctrl+c to quit."}
+[locust] [2026-10-16 08:23:14,007] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.runners: bench-glutton-mem-1gi-gvisor-pause-kj29m_9d1d9b933b0b4470aa97a8e276774173 (index 0) reported as ready. 1 workers connected.
+[locust] [2026-10-16 08:23:14,931] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.main: Run time limit set to 60 seconds
+[locust] [2026-10-16 08:23:14,932] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.runners: Sending spawn jobs of 1 users at 1.00 spawn rate to 1 ready workers
+[locust] [2026-10-16 08:23:14,932] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/common.trace: Test started, updated trace probability to 0.0
+[boomer] {"time":"2026-10-16T08:23:14.934174057Z","level":"INFO","msg":"dynconfig applied","trace_probability":0,"min_wait":1000000000,"max_wait":1000000000,"min_live":0,"max_live":0,"durdir_file_size_bytes":8388608,"resume_mode":"explicit","lifecycle_mode":"pause","durdir_read_mode":"data","durdir_template":"glutton-durdir-data","mem_target":"1Gi","mem_churn":"64Mi","mem_read":"all","cpu_cores":0,"cpu_duty_cycle":0,"max_pings_per_wake":1,"sweperf_template":"sweperf-astropy-7336","sweperf_total_steps":21,"sweperf_num_cycles":4,"sweperf_poll_interval_ms":100,"agentsession_script":"coding-session","agentsession_script_file":"","agentsession_think_scale":1,"total_actors":0,"spawn_concurrency":0,"actor_deadline":0,"target_rps":0}
+[boomer] {"time":"2026-10-16T08:23:14.934209771Z","level":"INFO","msg":"The total number of clients required is  1"}
+[boomer] {"time":"2026-10-16T08:23:14.934219917Z","level":"INFO","msg":"The current number of clients is 0, 1 clients will be added"}
+[locust] [2026-10-16 08:23:14,943] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.runners: All users spawned: {"GluttonUser": 1} (1 total users)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         3     0(0.00%) |     97       2     269     21 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         3     0(0.00%) |     97       2     269     21 |    0.00        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.50        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.50        0.00
+[locust] http     GluttonChurnRAM                                                                    1     0(0.00%) |    129     129     129    129 |    0.00        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        1     0(0.00%) |      3       3       3      3 |    0.00        0.00
+[locust] http     GluttonReadRAM                                                                     1     0(0.00%) |     65      65      65     65 |    0.00        0.00
+[locust] grpc     PauseActor                                                                         1     0(0.00%) |    851     851     851    851 |    0.00        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.50        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                         8     0(0.00%) |    483       2    2525     65 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.17        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.17        0.00
+[locust] http     GluttonChurnRAM                                                                    2     0(0.00%) |    132     129     136    130 |    0.17        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.17        0.00
+[locust] http     GluttonPing                                                                        2     0(0.00%) |      3       3       3      3 |    0.17        0.00
+[locust] http     GluttonReadRAM                                                                     2     0(0.00%) |     81      65      97     65 |    0.17        0.00
+[locust] grpc     PauseActor                                                                         2     0(0.00%) |    999     851    1147    851 |    0.17        0.00
+[locust] grpc     ResumeActor                                                                        1     0(0.00%) |    903     903     903    903 |    0.00        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.17        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        13     0(0.00%) |    473       2    2525    130 |    1.33        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.17        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.17        0.00
+[locust] http     GluttonChurnRAM                                                                    2     0(0.00%) |    132     129     136    130 |    0.17        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.17        0.00
+[locust] http     GluttonPing                                                                        2     0(0.00%) |      3       3       3      3 |    0.17        0.00
+[locust] http     GluttonReadRAM                                                                     2     0(0.00%) |     81      65      97     65 |    0.17        0.00
+[locust] grpc     PauseActor                                                                         2     0(0.00%) |    999     851    1147    851 |    0.17        0.00
+[locust] grpc     ResumeActor                                                                        1     0(0.00%) |    903     903     903    903 |    0.00        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.17        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        13     0(0.00%) |    473       2    2525    130 |    1.33        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.11        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.11        0.00
+[locust] http     GluttonChurnRAM                                                                    3     0(0.00%) |    132     129     136    130 |    0.22        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.11        0.00
+[locust] http     GluttonPing                                                                        3     0(0.00%) |      3       3       3      3 |    0.22        0.00
+[locust] http     GluttonReadRAM                                                                     3     0(0.00%) |     84      65      97     92 |    0.22        0.00
+[locust] grpc     PauseActor                                                                         3     0(0.00%) |   1053     851    1161   1100 |    0.22        0.00
+[locust] grpc     ResumeActor                                                                        2     0(0.00%) |    898     893     903    893 |    0.11        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.11        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        18     0(0.00%) |    468       2    2525    130 |    1.44        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    4     0(0.00%) |    134     129     140    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.10        0.00
+[locust] http     GluttonPing                                                                        4     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     4     0(0.00%) |     88      65     100     92 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         4     0(0.00%) |   1044     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        3     0(0.00%) |    912     893     942    900 |    0.20        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        23     0(0.00%) |    462       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    4     0(0.00%) |    134     129     140    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.10        0.00
+[locust] http     GluttonPing                                                                        4     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     4     0(0.00%) |     88      65     100     92 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         4     0(0.00%) |   1044     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        3     0(0.00%) |    912     893     942    900 |    0.20        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        23     0(0.00%) |    462       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    5     0(0.00%) |    135     129     142    140 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        5     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     5     0(0.00%) |     80      46     100     92 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         5     0(0.00%) |   1044     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        4     0(0.00%) |    913     893     942    900 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        28     0(0.00%) |    456       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    6     0(0.00%) |    135     129     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        6     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     6     0(0.00%) |     74      46     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         6     0(0.00%) |   1058     851    1161   1000 |    0.40        0.00
+[locust] grpc     ResumeActor                                                                        5     0(0.00%) |    913     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        33     0(0.00%) |    454       2    2525    130 |    1.60        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    6     0(0.00%) |    135     129     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        6     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     6     0(0.00%) |     74      46     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         6     0(0.00%) |   1058     851    1161   1000 |    0.40        0.00
+[locust] grpc     ResumeActor                                                                        5     0(0.00%) |    913     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        33     0(0.00%) |    454       2    2525    130 |    1.60        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    7     0(0.00%) |    134     129     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        7     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     7     0(0.00%) |     76      46     100     88 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         6     0(0.00%) |   1058     851    1161   1000 |    0.40        0.00
+[locust] grpc     ResumeActor                                                                        6     0(0.00%) |    915     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        37     0(0.00%) |    436       2    2525    130 |    1.60        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    8     0(0.00%) |    134     129     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        8     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     8     0(0.00%) |     78      46     100     88 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         7     0(0.00%) |   1056     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        7     0(0.00%) |    912     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        42     0(0.00%) |    436       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    8     0(0.00%) |    134     129     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        8     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     8     0(0.00%) |     78      46     100     88 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         7     0(0.00%) |   1056     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        7     0(0.00%) |    912     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        42     0(0.00%) |    436       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                    9     0(0.00%) |    133     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                        9     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                     9     0(0.00%) |     75      46     100     88 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         8     0(0.00%) |   1054     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        8     0(0.00%) |    913     893     942    910 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        47     0(0.00%) |    435       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   10     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       10     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    10     0(0.00%) |     72      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         9     0(0.00%) |   1050     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        9     0(0.00%) |    918     893     958    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        52     0(0.00%) |    434       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   10     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       10     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    10     0(0.00%) |     72      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                         9     0(0.00%) |   1050     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                        9     0(0.00%) |    918     893     958    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        52     0(0.00%) |    434       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   11     0(0.00%) |    132     128     142    130 |    0.40        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       11     0(0.00%) |      3       3       3      3 |    0.40        0.00
+[locust] http     GluttonReadRAM                                                                    11     0(0.00%) |     71      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        10     0(0.00%) |   1055     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       10     0(0.00%) |    922     893     962    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        57     0(0.00%) |    436       2    2525    130 |    1.70        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   12     0(0.00%) |    133     128     142    130 |    0.40        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       12     0(0.00%) |      3       3       3      3 |    0.40        0.00
+[locust] http     GluttonReadRAM                                                                    12     0(0.00%) |     69      45     100     65 |    0.40        0.00
+[locust] grpc     PauseActor                                                                        11     0(0.00%) |   1048     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       11     0(0.00%) |    921     893     962    920 |    0.40        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        62     0(0.00%) |    434       2    2525    130 |    1.90        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   12     0(0.00%) |    133     128     142    130 |    0.40        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       12     0(0.00%) |      3       3       3      3 |    0.40        0.00
+[locust] http     GluttonReadRAM                                                                    12     0(0.00%) |     69      45     100     65 |    0.40        0.00
+[locust] grpc     PauseActor                                                                        11     0(0.00%) |   1048     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       11     0(0.00%) |    921     893     962    920 |    0.40        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        62     0(0.00%) |    434       2    2525    130 |    1.90        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   12     0(0.00%) |    133     128     142    130 |    0.40        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       12     0(0.00%) |      3       3       3      3 |    0.40        0.00
+[locust] http     GluttonReadRAM                                                                    13     0(0.00%) |     70      45     100     65 |    0.40        0.00
+[locust] grpc     PauseActor                                                                        12     0(0.00%) |   1041     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       12     0(0.00%) |    922     893     962    920 |    0.40        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        65     0(0.00%) |    445       2    2525    130 |    1.90        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   13     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       13     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    13     0(0.00%) |     70      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        13     0(0.00%) |   1038     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       12     0(0.00%) |    922     893     962    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        68     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   13     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       13     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    13     0(0.00%) |     70      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        13     0(0.00%) |   1038     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       12     0(0.00%) |    922     893     962    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        68     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   14     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       14     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    14     0(0.00%) |     68      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        14     0(0.00%) |   1039     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       13     0(0.00%) |    925     893     962    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        73     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   15     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       15     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    15     0(0.00%) |     69      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        15     0(0.00%) |   1042     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       14     0(0.00%) |    928     893     966    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        78     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   15     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       15     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    15     0(0.00%) |     69      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        15     0(0.00%) |   1042     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       14     0(0.00%) |    928     893     966    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        78     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   16     0(0.00%) |    132     128     142    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       16     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    16     0(0.00%) |     70      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        16     0(0.00%) |   1043     851    1161   1000 |    0.30        0.00
+[locust] grpc     ResumeActor                                                                       15     0(0.00%) |    926     893     966    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        83     0(0.00%) |    442       2    2525    130 |    1.50        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   17     0(0.00%) |    133     128     149    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       17     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    17     0(0.00%) |     69      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        17     0(0.00%) |   1041     851    1161   1000 |    0.40        0.00
+[locust] grpc     ResumeActor                                                                       16     0(0.00%) |    929     893     982    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        88     0(0.00%) |    442       2    2525    130 |    1.60        0.00
+[locust] 
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.00        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.00        0.00
+[locust] http     GluttonChurnRAM                                                                   17     0(0.00%) |    133     128     149    130 |    0.30        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.00        0.00
+[locust] http     GluttonPing                                                                       17     0(0.00%) |      3       3       3      3 |    0.30        0.00
+[locust] http     GluttonReadRAM                                                                    17     0(0.00%) |     69      45     100     65 |    0.30        0.00
+[locust] grpc     PauseActor                                                                        17     0(0.00%) |   1041     851    1161   1000 |    0.40        0.00
+[locust] grpc     ResumeActor                                                                       16     0(0.00%) |    929     893     982    920 |    0.30        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.00        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        88     0(0.00%) |    442       2    2525    130 |    1.60        0.00
+[locust] 
+[locust] [2026-10-16 08:24:14,932] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.main: --run-time limit reached, shutting down
+[boomer] {"time":"2026-10-16T08:24:14.933219343Z","level":"INFO","msg":"Recv quit message from master, all the goroutines are stopped"}
+[boomer] {"time":"2026-10-16T08:24:14.933291245Z","level":"INFO","msg":"shutdown"}
+[boomer] {"time":"2026-10-16T08:24:14.933302849Z","level":"INFO","msg":"boomer exited; suspending+deleting actors"}
+[locust] [2026-10-16 08:24:14,933] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.runners: Worker 'bench-glutton-mem-1gi-gvisor-pause-kj29m_9d1d9b933b0b4470aa97a8e276774173' (index 0) quit. 0 workers ready.
+[locust] [2026-10-16 08:24:14,933] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.runners: The last worker quit, stopping test.
+[locust] [2026-10-16 08:24:15,934] bench-glutton-mem-1gi-gvisor-pause-kj29m/INFO/locust.main: Shutting down (exit code 0)
+[locust] Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust] grpc     CreateActor                                                                        1     0(0.00%) |      2       2       2      2 |    0.02        0.00
+[locust] grpc     CreateAtespace                                                                     1     0(0.00%) |     21      21      21     21 |    0.02        0.00
+[locust] http     GluttonChurnRAM                                                                   18     0(0.00%) |    133     128     149    130 |    0.31        0.00
+[locust] http     GluttonFillRAM                                                                     1     0(0.00%) |   2525    2525    2525   2525 |    0.02        0.00
+[locust] http     GluttonPing                                                                       18     0(0.00%) |      3       3       3      3 |    0.31        0.00
+[locust] http     GluttonReadRAM                                                                    18     0(0.00%) |     69      45     100     65 |    0.31        0.00
+[locust] grpc     PauseActor                                                                        18     0(0.00%) |   1042     851    1161   1000 |    0.31        0.00
+[locust] grpc     ResumeActor                                                                       17     0(0.00%) |    928     893     982    920 |    0.29        0.00
+[locust] grpc     ResumeActorFirstResume                                                             1     0(0.00%) |    269     269     269    269 |    0.02        0.00
+[locust] --------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+[locust]          Aggregated                                                                        93     0(0.00%) |    441       2    2525    130 |    1.58        0.00
+[locust] 
+[locust] Response time percentiles (approximated)
+[locust] Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust] grpc     CreateActor                                                                             2      2      2      2      2      2      2      2      2      2      2      1
+[locust] grpc     CreateAtespace                                                                         21     21     21     21     21     21     21     21     21     21     21      1
+[locust] http     GluttonChurnRAM                                                                       130    130    140    140    140    150    150    150    150    150    150     18
+[locust] http     GluttonFillRAM                                                                       2500   2500   2500   2500   2500   2500   2500   2500   2500   2500   2500      1
+[locust] http     GluttonPing                                                                             3      3      3      3      3      3      3      3      3      3      3     18
+[locust] http     GluttonReadRAM                                                                         76     81     88     92     97    100    100    100    100    100    100     18
+[locust] grpc     PauseActor                                                                           1000   1100   1100   1100   1100   1200   1200   1200   1200   1200   1200     18
+[locust] grpc     ResumeActor                                                                           920    940    960    960    970    980    980    980    980    980    980     17
+[locust] grpc     ResumeActorFirstResume                                                                270    270    270    270    270    270    270    270    270    270    270      1
+[locust] --------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+[locust]          Aggregated                                                                            130    900    940    970   1000   1100   1200   2500   2500   2500   2500     93
+[locust] 
+Locust exited with code 0
+Stopping boomer...
+Boomer exited with code 0
+Appended trial_summary to /tmp/20261016T082313Z-locust-runner/glutton_mem_1gi_gvisor_pause.jsonl
+[ServerTelemetry] Waiting 69s for the atelet's last export to be scraped...
+[ServerTelemetry] Harvesting Prometheus metrics from http://prometheus.benchmarking.svc.cluster.local:9090 over [1792138993, 1792139056]...
+[ServerTelemetry] Detected steady-state window: [1792138995, 1792139054] (59s), atelet-exported reads (snapshots, active actors) at [1792139030, 1792139089]
+[ServerTelemetry] Wrote server summary artifact to /tmp/20261016T082313Z-locust-runner/glutton_mem_1gi_gvisor_pause_server_summary.json
+[ServerTelemetry] Appended server_summary row to /tmp/20261016T082313Z-locust-runner/glutton_mem_1gi_gvisor_pause.jsonl
+Appended 48 phase breakdown rows from 74 records
